@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Details - DrugDex</title>
+    <link rel="icon" type="image/svg+xml" href="../logo/favicon.svg">
+    <link rel="stylesheet" href="styles.new.css">
+    <link rel="stylesheet" href="dark-mode-animations.css">
+    <link rel="stylesheet" href="liquid-effect.css">
+    <link rel="stylesheet" href="glassmorphism.css">
+    <link rel="stylesheet" href="css/medicine-details.css">
+    <link rel="stylesheet" href="css/medicine-glass.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="js/search-clean.js" defer></script>
+    <script src="js/student-mode.js" defer></script>
+    <script src="js/advanced-features.js" defer></script>
+    <script src="js/health-analytics.js" defer></script>
+    <style>
+        .medicine-not-found {
+            text-align: center;
+            padding: 3rem 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .medicine-not-found i {
+            font-size: 4rem;
+            color: #ff9800;
+            margin-bottom: 1rem;
+        }
+
+        .medicine-not-found h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .medicine-not-found p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .alternatives-grid,
+        .similar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .medicine-card {
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 1rem;
+            transition: transform 0.2s;
+            background: #fff;
+        }
+
+        .medicine-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .medicine-card h4 {
+            margin: 0 0 0.5rem 0;
+            color: #2c3e50;
+        }
+
+        .medicine-card p,
+        .medicine-card small {
+            margin: 0.25rem 0;
+            color: #666;
+        }
+
+        .info-box p {
+            margin: 0.5rem 0;
+            line-height: 1.6;
+        }
+
+        .interactions ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .interactions li {
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 3px solid #4a6cf7;
+        }
+
+        .other-names p {
+            padding: 0.75rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div class="back-header">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                <div class="back-brand">
+                    <img src="../logo/logo.svg" class="logo" alt="DrugDex Logo">
+                    <div class="back-brand-text">
+                        <span class="back-site-name">DrugDex</span>
+                        <span class="back-tagline">Your Health Partner</span>
+                    </div>
+                </div>
+                <span class="back-text">Back to Search</span>
+            </a>
+        </div>
+
+        <main class="medicine-details-container">
+            <div class="medicine-header">
+                <div class="medicine-image">
+                    <img src="images/medicine-placeholder.jpg" alt="Medicine" id="medicineImage">
+                </div>
+                <div class="medicine-info">
+                    <h1 id="medicineName">Loading...</h1>
+                    <div class="medicine-meta">
+                        <span class="type" id="medicineType"></span>
+                        <span class="manufacturer" id="medicineManufacturer"></span>
+                        <span class="generic" id="medicineGeneric"></span>
+                    </div>
+                    <div class="medicine-price">
+                        <span class="price" id="medicinePrice"></span>
+                        <span class="availability" id="medicineAvailability">In Stock</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="medicine-details">
+                <!-- Chemistry Diagram Section (Visible in Student Mode) -->
+                <div class="details-section chemistry-diagram" id="chemistryDiagram" style="display: none;">
+                    <h2>Chemical Structure</h2>
+                    <div class="chemistry-diagram-container">
+                        <div id="chemicalStructure"
+                            style="width: 100%; height: 300px; background-color: #f8f9fa; display: flex; justify-content: center; align-items: center; border-radius: 8px;">
+                            <p>Loading chemical structure...</p>
+                        </div>
+                        <div class="molecular-formula" id="molecularFormula"></div>
+                    </div>
+                </div>
+
+                <div class="details-section">
+                    <h2>Description</h2>
+                    <p id="medicineDescription">Loading description...</p>
+                </div>
+
+                <div class="details-section">
+                    <h2>Dosage</h2>
+                    <div class="dosage-info" id="dosageInfo">
+                        <div class="info-item">
+                            <i class="fas fa-capsules"></i>
+                            <div>
+                                <h4>Dosage Form</h4>
+                                <p id="dosageForm">Tablet</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-chart-line"></i>
+                            <div>
+                                <h4>Strength</h4>
+                                <p id="medicineStrength">500mg</p>
+                            </div>
+                        </div>
+                        <div class="info-item full-width">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                <h4>Recommended Dosage</h4>
+                                <p id="recommendedDosage">As directed by physician</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details-section">
+                    <h2>Side Effects</h2>
+                    <ul class="side-effects" id="sideEffects">
+                        <li>Loading side effects...</li>
+                    </ul>
+                </div>
+
+                <div class="details-section">
+                    <h2>Pregnancy / Breastfeeding</h2>
+                    <div class="info-box" id="pregnancyInfo">
+                        <p>Loading pregnancy and breastfeeding information...</p>
+                    </div>
+                </div>
+
+
+                <div class="details-section">
+                    <h2>Other Names</h2>
+                    <div class="other-names" id="otherNames">
+                        <p>Loading other names...</p>
+                    </div>
+                </div>
+
+                <div class="details-section">
+                    <h2>Similar Medicines</h2>
+                    <div class="similar-medicines" id="similarMedicines">
+                        <p>Loading similar medicines...</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Features Section -->
+                <div class="details-section interactive-features">
+                    <h2>Interactive Tools</h2>
+                    <div class="feature-buttons">
+                        <button class="feature-btn" onclick="openDosageCalculator()">
+                            <i class="fas fa-calculator"></i>
+                            <span>Dosage Calculator</span>
+                        </button>
+                        <button class="feature-btn" onclick="openInteractionChecker()">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>Check Interactions</span>
+                        </button>
+                        <button class="feature-btn" onclick="openPillReminder()">
+                            <i class="fas fa-bell"></i>
+                            <span>Set Reminder</span>
+                        </button>
+                        <button class="feature-btn" onclick="openAlternatives()">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>Find Alternatives</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Reviews and Ratings Section -->
+                <div class="details-section reviews-section">
+                    <h2>User Reviews & Ratings</h2>
+                    <div class="rating-summary">
+                        <div class="overall-rating">
+                            <span class="rating-number">4.2</span>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="review-count">(1,234 reviews)</span>
+                        </div>
+                        <div class="rating-breakdown">
+                            <div class="rating-bar">
+                                <span>5★</span>
+                                <div class="bar">
+                                    <div class="fill" style="width: 60%"></div>
+                                </div>
+                                <span>60%</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span>4★</span>
+                                <div class="bar">
+                                    <div class="fill" style="width: 25%"></div>
+                                </div>
+                                <span>25%</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span>3★</span>
+                                <div class="bar">
+                                    <div class="fill" style="width: 10%"></div>
+                                </div>
+                                <span>10%</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span>2★</span>
+                                <div class="bar">
+                                    <div class="fill" style="width: 3%"></div>
+                                </div>
+                                <span>3%</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span>1★</span>
+                                <div class="bar">
+                                    <div class="fill" style="width: 2%"></div>
+                                </div>
+                                <span>2%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reviews-list" id="reviewsList">
+                        <!-- Reviews will be loaded here -->
+                    </div>
+
+                    <button class="btn-secondary" onclick="showAllReviews()">View All Reviews</button>
+                </div>
+
+                <!-- AI-Powered Q&A Section -->
+                <div class="details-section qa-section">
+                    <h2>Ask AI About This Medicine</h2>
+                    <div class="ai-qa-container">
+                        <div class="common-questions">
+                            <h3>Common Questions:</h3>
+                            <div class="question-tags">
+                                <span class="question-tag" onclick="askQuestion('How does this medicine work?')">How
+                                    does it work?</span>
+                                <span class="question-tag" onclick="askQuestion('What are the side effects?')">Side
+                                    effects?</span>
+                                <span class="question-tag" onclick="askQuestion('Can I take this with food?')">Take with
+                                    food?</span>
+                                <span class="question-tag" onclick="askQuestion('How long does it take to work?')">How
+                                    long to work?</span>
+                                <span class="question-tag"
+                                    onclick="askQuestion('Can I drink alcohol while taking this?')">Alcohol
+                                    interaction?</span>
+                            </div>
+                        </div>
+
+                        <div class="qa-input-container">
+                            <input type="text" id="qaInput" placeholder="Ask anything about this medicine..."
+                                maxlength="200">
+                            <button onclick="askCustomQuestion()"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+
+                        <div class="qa-responses" id="qaResponses">
+                            <!-- AI responses will appear here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details-section">
+                    <h2>Precautions</h2>
+                    <ul class="precautions" id="precautions">
+                        <li>Loading precautions...</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Dosage Calculator Modal -->
+    <div id="dosageCalculatorModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-calculator"></i> Dosage Calculator</h2>
+                <span class="close" onclick="closeModal('dosageCalculatorModal')">&times;</span>
+            </div>
+            <div class="dosage-calculator-content">
+                <div class="calculator-form">
+                    <div class="form-group">
+                        <label for="patientWeight">Patient Weight (kg)</label>
+                        <input type="number" id="patientWeight" min="1" max="200" placeholder="Enter weight">
+                    </div>
+                    <div class="form-group">
+                        <label for="patientAge">Patient Age (years)</label>
+                        <input type="number" id="patientAge" min="1" max="120" placeholder="Enter age">
+                    </div>
+                    <div class="form-group">
+                        <label for="indication">Indication</label>
+                        <select id="indication">
+                            <option value="pain">Pain Relief</option>
+                            <option value="fever">Fever</option>
+                            <option value="inflammation">Inflammation</option>
+                            <option value="infection">Infection</option>
+                        </select>
+                    </div>
+                    <button class="btn-primary" onclick="calculateDosage()">Calculate Dosage</button>
+                </div>
+
+                <div class="dosage-result" id="dosageResult" style="display: none;">
+                    <h3>Recommended Dosage</h3>
+                    <div id="dosageResultContent">
+                        <!-- Results will be populated here -->
+                    </div>
+                    <div class="dosage-disclaimer">
+                        <p><strong>Disclaimer:</strong> This calculator provides general guidance only. Always consult
+                            with a healthcare professional for personalized dosing recommendations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alternatives Modal -->
+    <div id="alternativesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-exchange-alt"></i> Alternative Medicines</h2>
+                <span class="close" onclick="closeModal('alternativesModal')">&times;</span>
+            </div>
+            <div class="alternatives-content">
+                <div class="filter-options">
+                    <h3>Filter by:</h3>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="generic">Generic</button>
+                        <button class="filter-btn" data-filter="branded">Branded</button>
+                        <button class="filter-btn" data-filter="cheaper">Cheaper</button>
+                    </div>
+                </div>
+
+                <div class="alternatives-list" id="alternativesList">
+                    <!-- Alternatives will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reviews Modal -->
+    <div id="reviewsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-star"></i> User Reviews</h2>
+                <span class="close" onclick="closeModal('reviewsModal')">&times;</span>
+            </div>
+            <div class="reviews-modal-content">
+                <div class="add-review-section">
+                    <h3>Add Your Review</h3>
+                    <div class="rating-input">
+                        <span>Your Rating:</span>
+                        <div class="star-rating" id="starRating">
+                            <i class="far fa-star" data-rating="1"></i>
+                            <i class="far fa-star" data-rating="2"></i>
+                            <i class="far fa-star" data-rating="3"></i>
+                            <i class="far fa-star" data-rating="4"></i>
+                            <i class="far fa-star" data-rating="5"></i>
+                        </div>
+                    </div>
+                    <textarea id="reviewText" placeholder="Share your experience with this medicine..."
+                        maxlength="500"></textarea>
+                    <button class="btn-primary" onclick="submitReview()">Submit Review</button>
+                </div>
+
+                <div class="all-reviews" id="allReviews">
+                    <!-- All reviews will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to fetch chemical structure from PubChem
+        async function fetchChemicalStructure(medicineName) {
+            const structureContainer = document.getElementById('chemicalStructure');
+            const formulaElement = document.getElementById('molecularFormula');
+
+            try {
+                // First, search for the compound to get its CID
+                const searchUrl = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/${encodeURIComponent(medicineName)}/JSON`;
+                const searchResponse = await fetch(searchUrl);
+
+                if (!searchResponse.ok) {
+                    throw new Error('Chemical structure not found');
+                }
+
+                const searchData = await searchResponse.json();
+                const cid = searchData.PC_Compounds[0].id.id.cid;
+
+                // Get molecular formula
+                const formula = searchData.PC_Compounds[0].props.find(prop =>
+                    prop.urn.label === 'Molecular Formula'
+                )?.value?.sval || 'N/A';
+
+                formulaElement.textContent = `Molecular Formula: ${formula}`;
+
+                // Display the 2D structure
+                structureContainer.innerHTML = `
+                    <img src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/${cid}/PNG" 
+                         alt="${medicineName} chemical structure"
+                         style="max-width: 100%; max-height: 100%;">
+                `;
+
+            } catch (error) {
+                console.error('Error fetching chemical structure:', error);
+                structureContainer.innerHTML = `
+                    <div style="text-align: center; padding: 1rem; color: #666;">
+                        <i class="fas fa-flask" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+                        <p>Chemical structure not available for ${medicineName}</p>
+                        <small>${error.message}</small>
+                    </div>
+                `;
+            }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if in student mode from URL or sessionStorage
+            const urlParams = new URLSearchParams(window.location.search);
+            let isStudentMode = urlParams.get('student') === 'true';
+
+            // If not in URL, check sessionStorage
+            if (!urlParams.has('student')) {
+                isStudentMode = sessionStorage.getItem('studentMode') === 'true';
+            }
+
+            // Enhanced student mode features
+            if (isStudentMode) {
+                const chemistrySection = document.getElementById('chemistryDiagram');
+                const studentBanner = document.getElementById('studentModeBanner');
+                if (chemistrySection) {
+                    chemistrySection.style.display = 'block';
+                }
+                if (studentBanner) {
+                    studentBanner.style.display = 'block';
+                }
+                
+                // Add student mode enhancements
+                addStudentModeEnhancements();
+            }
+            
+            // Student mode enhancement functions
+            function addStudentModeEnhancements() {
+                // Add quiz questions
+                addQuizQuestions();
+                
+                // Add study highlights
+                addStudyHighlights();
+                
+                // Add learning objectives
+                addLearningObjectives();
+                
+                // Add memory aids
+                addMemoryAids();
+            }
+            
+            function addQuizQuestions() {
+                const quizSection = document.createElement('div');
+                quizSection.className = 'student-quiz-section';
+                quizSection.innerHTML = `
+                    <h3><i class="fas fa-question-circle"></i> Quick Quiz</h3>
+                    <div class="quiz-questions">
+                        <div class="quiz-question">
+                            <p><strong>Q1:</strong> What is the primary mechanism of action for this medicine?</p>
+                            <div class="quiz-options">
+                                <button class="quiz-option" onclick="checkAnswer(this, false)">A) Enzyme inhibition</button>
+                                <button class="quiz-option" onclick="checkAnswer(this, true)">B) Receptor binding</button>
+                                <button class="quiz-option" onclick="checkAnswer(this, false)">C) DNA synthesis</button>
+                                <button class="quiz-option" onclick="checkAnswer(this, false)">D) Protein synthesis</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                const detailsContainer = document.querySelector('.medicine-details');
+                if (detailsContainer) {
+                    detailsContainer.appendChild(quizSection);
+                }
+            }
+            
+            function addStudyHighlights() {
+                const highlights = document.createElement('div');
+                highlights.className = 'study-highlights';
+                highlights.innerHTML = `
+                    <h3><i class="fas fa-highlighter"></i> Key Study Points</h3>
+                    <div class="highlight-cards">
+                        <div class="highlight-card mechanism">
+                            <i class="fas fa-cogs"></i>
+                            <h4>Mechanism</h4>
+                            <p>Focus on how this medicine works at the molecular level</p>
+                        </div>
+                        <div class="highlight-card dosage">
+                            <i class="fas fa-pills"></i>
+                            <h4>Dosage</h4>
+                            <p>Remember the standard dosing guidelines and adjustments</p>
+                        </div>
+                        <div class="highlight-card interactions">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h4>Interactions</h4>
+                            <p>Important drug interactions to memorize</p>
+                        </div>
+                    </div>
+                `;
+                
+                const detailsContainer = document.querySelector('.medicine-details');
+                if (detailsContainer) {
+                    detailsContainer.appendChild(highlights);
+                }
+            }
+            
+            function addLearningObjectives() {
+                const objectives = document.createElement('div');
+                objectives.className = 'learning-objectives';
+                objectives.innerHTML = `
+                    <h3><i class="fas fa-bullseye"></i> Learning Objectives</h3>
+                    <ul class="objectives-list">
+                        <li><i class="fas fa-check-circle"></i> Understand the pharmacokinetics and pharmacodynamics</li>
+                        <li><i class="fas fa-check-circle"></i> Identify contraindications and precautions</li>
+                        <li><i class="fas fa-check-circle"></i> Recognize adverse effects and management</li>
+                        <li><i class="fas fa-check-circle"></i> Apply dosing principles in clinical scenarios</li>
+                    </ul>
+                `;
+                
+                const detailsContainer = document.querySelector('.medicine-details');
+                if (detailsContainer) {
+                    detailsContainer.appendChild(objectives);
+                }
+            }
+            
+            function addMemoryAids() {
+                const memoryAids = document.createElement('div');
+                memoryAids.className = 'memory-aids';
+                memoryAids.innerHTML = `
+                    <h3><i class="fas fa-brain"></i> Memory Aids</h3>
+                    <div class="memory-cards">
+                        <div class="memory-card">
+                            <h4>Mnemonic</h4>
+                            <p class="mnemonic-text">"Remember: Always check Patient, Dose, Route, Time"</p>
+                        </div>
+                        <div class="memory-card">
+                            <h4>Visual Cue</h4>
+                            <p>Associate the medicine color/shape with its primary use</p>
+                        </div>
+                    </div>
+                `;
+                
+                const detailsContainer = document.querySelector('.medicine-details');
+                if (detailsContainer) {
+                    detailsContainer.appendChild(memoryAids);
+                }
+            }
+            
+            // Quiz answer checking function
+            function checkAnswer(button, isCorrect) {
+                const options = button.parentElement.querySelectorAll('.quiz-option');
+                options.forEach(option => {
+                    option.disabled = true;
+                    if (option === button) {
+                        option.classList.add(isCorrect ? 'correct' : 'incorrect');
+                    } else if (option.onclick.toString().includes('true')) {
+                        option.classList.add('correct');
+                    }
+                });
+                
+                // Show feedback
+                const feedback = document.createElement('div');
+                feedback.className = 'quiz-feedback';
+                feedback.innerHTML = isCorrect ? 
+                    '<i class="fas fa-check-circle"></i> Correct! Great job!' : 
+                    '<i class="fas fa-times-circle"></i> Incorrect. The correct answer is highlighted.';
+                button.parentElement.parentElement.appendChild(feedback);
+            }
+
+            // Get medicine data from session storage
+            const medicineData = sessionStorage.getItem('currentMedicine');
+
+            if (!medicineData) {
+                // If no medicine data found, show error message
+                document.querySelector('.medicine-header').innerHTML = `
+                    <div class="medicine-not-found">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h2>No medicine selected</h2>
+                        <p>Please search for a medicine first.</p>
+                        <a href="index.html" class="btn btn-primary">Back to Search</a>
+                    </div>
+                `;
+                return;
+            }
+
+            try {
+                const medicine = JSON.parse(medicineData);
+                if (medicine && typeof medicine === 'object') {
+                    updateMedicineDetails(medicine);
+                } else {
+                    throw new Error('Invalid medicine data');
+                }
+            } catch (error) {
+                console.error('Error parsing medicine data:', error);
+                document.querySelector('.medicine-header').innerHTML = `
+                    <div class="medicine-not-found">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h2>Error loading medicine</h2>
+                        <p>There was a problem loading the medicine details. Please try again.</p>
+                        <a href="index.html" class="btn btn-primary">Back to Search</a>
+                    </div>
+                `;
+            }
+
+            function updateMedicineDetails(medicine) {
+                // Update basic info
+                document.getElementById('medicineName').textContent = medicine.name;
+
+                // Always show chemistry diagram in student mode
+                if (isStudentMode) {
+                    const chemistrySection = document.getElementById('chemistryDiagram');
+                    if (chemistrySection) {
+                        chemistrySection.style.display = 'block';
+                        // Use generic name for better chemical structure matching
+                        const genericName = medicine.name.split('(')[0].trim();
+                        fetchChemicalStructure(genericName);
+                    }
+                }
+                document.getElementById('medicineType').textContent = medicine.category || 'Not specified';
+                document.getElementById('medicineGeneric').textContent = medicine.name.split('(')[0].trim();
+                document.getElementById('medicineManufacturer').textContent = medicine.manufacturer || 'Various manufacturers';
+                document.getElementById('medicineImage').src = 'images/medicines/placeholder.jpg';
+                document.getElementById('medicineImage').alt = medicine.name;
+
+                // Update description with all available details
+                const description = document.getElementById('medicineDescription');
+                let descriptionHTML = '';
+
+                // Add uses if available
+                if (medicine.uses) {
+                    descriptionHTML += `<p><strong>Uses:</strong> ${medicine.uses}</p>`;
+                }
+
+                // Add dosage information
+                if (medicine.dosage) {
+                    descriptionHTML += `<p><strong>Dosage:</strong> ${medicine.dosage}</p>`;
+                }
+
+                // Add mechanism of action if available
+                if (medicine.mechanism) {
+                    descriptionHTML += `<p><strong>How it works:</strong> ${medicine.mechanism}</p>`;
+                }
+
+                // Add onset of action if available
+                if (medicine.onset) {
+                    descriptionHTML += `<p><strong>Onset of action:</strong> ${medicine.onset}</p>`;
+                }
+
+                // Add duration of effect if available
+                if (medicine.duration) {
+                    descriptionHTML += `<p><strong>Duration:</strong> ${medicine.duration}</p>`;
+                }
+
+                // Add how to take if available
+                if (medicine.howToTake) {
+                    descriptionHTML += `<p><strong>How to take:</strong> ${medicine.howToTake}</p>`;
+                }
+
+                // Add what to do if you miss a dose
+                if (medicine.missedDose) {
+                    descriptionHTML += `<p><strong>If you miss a dose:</strong> ${medicine.missedDose}</p>`;
+                }
+
+                // Add storage information if available
+                if (medicine.storage) {
+                    descriptionHTML += `<p><strong>Storage:</strong> ${medicine.storage}</p>`;
+                }
+
+                // Add warning if no description is available
+                if (descriptionHTML === '') {
+                    descriptionHTML = '<p>No detailed information available. Please consult your healthcare provider.</p>';
+                }
+
+                description.innerHTML = descriptionHTML;
+
+                // Update recommended dosage if available
+                if (medicine.recommendedDosage) {
+                    document.getElementById('recommendedDosage').textContent = medicine.recommendedDosage;
+                }
+
+                // Pregnancy/breastfeeding info will be handled in the precautions section
+
+
+                // Update other names
+                const otherNames = document.getElementById('otherNames');
+                if (medicine.otherNames && medicine.otherNames.length > 0) {
+                    otherNames.innerHTML = `<p>Also known as: ${medicine.otherNames.join(', ')}</p>`;
+                }
+
+                // Update similar medicines
+                const similarMedicines = document.getElementById('similarMedicines');
+                if (medicine.similarMedicines && medicine.similarMedicines.length > 0) {
+                    let similarHTML = '<div class="similar-grid">';
+                    medicine.similarMedicines.slice(0, 4).forEach(sim => {
+                        similarHTML += `
+                            <div class="medicine-card">
+                                <h4>${sim.name}</h4>
+                                <p>${sim.type || ''}</p>
+                                <small>${sim.manufacturer || ''}</small>
+                            </div>
+                        `;
+                    });
+                    similarHTML += '</div>';
+                    similarMedicines.innerHTML = similarHTML;
+                }
+
+                // Update strength and dosage form if available
+                document.getElementById('medicineStrength').textContent = medicine.strength || 'Not specified';
+                document.getElementById('dosageForm').textContent = medicine.dosageForm || 'Not specified';
+
+                // Update side effects
+                const sideEffectsList = document.getElementById('sideEffects');
+                sideEffectsList.innerHTML = '';
+                if (medicine.sideEffects) {
+                    if (Array.isArray(medicine.sideEffects) && medicine.sideEffects.length > 0) {
+                        medicine.sideEffects.forEach(effect => {
+                            const li = document.createElement('li');
+                            li.textContent = effect;
+                            sideEffectsList.appendChild(li);
+                        });
+                    } else if (typeof medicine.sideEffects === 'string') {
+                        const li = document.createElement('li');
+                        li.textContent = medicine.sideEffects;
+                        sideEffectsList.appendChild(li);
+                    } else {
+                        sideEffectsList.innerHTML = '<li>No known side effects reported.</li>';
+                    }
+                } else {
+                    sideEffectsList.innerHTML = '<li>No side effects information available.</li>';
+                }
+
+                // Update precautions
+                const precautionsList = document.getElementById('precautions');
+                precautionsList.innerHTML = '';
+                if (medicine.precautions) {
+                    if (Array.isArray(medicine.precautions) && medicine.precautions.length > 0) {
+                        medicine.precautions.forEach(precaution => {
+                            const li = document.createElement('li');
+                            li.textContent = precaution;
+                            precautionsList.appendChild(li);
+                        });
+                    } else if (typeof medicine.precautions === 'string') {
+                        const li = document.createElement('li');
+                        li.textContent = medicine.precautions;
+                        precautionsList.appendChild(li);
+                    } else {
+                        precautionsList.innerHTML = '<li>No specific precautions available.</li>';
+                    }
+                } else {
+                    precautionsList.innerHTML = '<li>No precautions information available.</li>';
+                }
+
+                // Update pregnancy and breastfeeding info
+                const pregnancyInfo = document.getElementById('pregnancyInfo');
+                let pregnancyHTML = '';
+
+                if (medicine.pregnancyCategory) {
+                    pregnancyHTML += `<p><strong>Pregnancy Category:</strong> ${medicine.pregnancyCategory}</p>`;
+                }
+
+                if (medicine.pregnancyNotes) {
+                    pregnancyHTML += `<p><strong>Pregnancy:</strong> ${medicine.pregnancyNotes}</p>`;
+                }
+
+                if (medicine.breastfeedingInfo) {
+                    pregnancyHTML += `<p><strong>Breastfeeding:</strong> ${medicine.breastfeedingInfo}</p>`;
+                }
+
+                if (pregnancyHTML === '') {
+                    pregnancyHTML = '<p>No pregnancy or breastfeeding information available. Please consult your healthcare provider.</p>';
+                }
+
+                pregnancyInfo.innerHTML = pregnancyHTML;
+
+                // Load sample reviews
+                loadSampleReviews();
+            }
+
+            // Load sample reviews
+            function loadSampleReviews() {
+                const reviewsList = document.getElementById('reviewsList');
+                const sampleReviews = [
+                    {
+                        name: 'Sarah M.',
+                        rating: 5,
+                        date: '2024-01-15',
+                        review: 'Very effective for pain relief. No side effects experienced.',
+                        helpful: 12
+                    },
+                    {
+                        name: 'John D.',
+                        rating: 4,
+                        date: '2024-01-10',
+                        review: 'Works well but takes a bit longer to kick in than expected.',
+                        helpful: 8
+                    },
+                    {
+                        name: 'Maria L.',
+                        rating: 5,
+                        date: '2024-01-08',
+                        review: 'Great medicine, helped with my condition significantly.',
+                        helpful: 15
+                    }
+                ];
+
+                let reviewsHTML = '';
+                sampleReviews.forEach(review => {
+                    const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+                    reviewsHTML += `
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <span class="reviewer-name">${review.name}</span>
+                                    <span class="review-date">${new Date(review.date).toLocaleDateString()}</span>
+                                </div>
+                                <div class="review-rating">${stars}</div>
+                            </div>
+                            <div class="review-text">${review.review}</div>
+                            <div class="review-actions">
+                                <button class="helpful-btn">👍 Helpful (${review.helpful})</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                reviewsList.innerHTML = reviewsHTML;
+            }
+        });
+
+        // Modal Functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Interactive Features
+        function openDosageCalculator() {
+            openModal('dosageCalculatorModal');
+        }
+
+        function openInteractionChecker() {
+            // Redirect to main page with interaction checker open
+            sessionStorage.setItem('openInteractionChecker', 'true');
+            window.location.href = 'index.html';
+        }
+
+        function openPillReminder() {
+            // Redirect to main page with pill reminder open
+            sessionStorage.setItem('openPillReminder', 'true');
+            window.location.href = 'index.html';
+        }
+
+        function openAlternatives() {
+            openModal('alternativesModal');
+            loadAlternatives();
+        }
+
+        function showAllReviews() {
+            openModal('reviewsModal');
+            loadAllReviews();
+        }
+
+        // Dosage Calculator
+        function calculateDosage() {
+            const weight = parseFloat(document.getElementById('patientWeight').value);
+            const age = parseInt(document.getElementById('patientAge').value);
+            const indication = document.getElementById('indication').value;
+
+            if (!weight || !age) {
+                alert('Please enter both weight and age');
+                return;
+            }
+
+            // Simple dosage calculation (this would be more complex in a real application)
+            let dosage = '';
+            let frequency = '';
+
+            // Basic calculation based on weight and indication
+            switch (indication) {
+                case 'pain':
+                    dosage = Math.round(weight * 10) + 'mg';
+                    frequency = 'every 6-8 hours';
+                    break;
+                case 'fever':
+                    dosage = Math.round(weight * 15) + 'mg';
+                    frequency = 'every 4-6 hours';
+                    break;
+                case 'inflammation':
+                    dosage = Math.round(weight * 5) + 'mg';
+                    frequency = 'twice daily';
+                    break;
+                case 'infection':
+                    dosage = Math.round(weight * 20) + 'mg';
+                    frequency = 'three times daily';
+                    break;
+            }
+
+            // Age adjustments
+            if (age < 12) {
+                dosage = Math.round(parseFloat(dosage) * 0.5) + 'mg';
+            } else if (age > 65) {
+                dosage = Math.round(parseFloat(dosage) * 0.75) + 'mg';
+            }
+
+            const resultContent = document.getElementById('dosageResultContent');
+            resultContent.innerHTML = `
+                <div class="dosage-recommendation">
+                    <h4>Recommended Dosage: ${dosage}</h4>
+                    <p><strong>Frequency:</strong> ${frequency}</p>
+                    <p><strong>Patient Profile:</strong> ${age} years old, ${weight}kg</p>
+                    <p><strong>Indication:</strong> ${indication.charAt(0).toUpperCase() + indication.slice(1)}</p>
+                </div>
+            `;
+
+            document.getElementById('dosageResult').style.display = 'block';
+        }
+
+        // Load alternatives
+        function loadAlternatives() {
+            const alternativesList = document.getElementById('alternativesList');
+            const currentMedicine = JSON.parse(sessionStorage.getItem('currentMedicine'));
+
+            // Sample alternatives (in a real app, this would come from a database)
+            const alternatives = [
+                {
+                    name: 'Generic Alternative 1',
+                    type: 'Generic',
+                    price: '₹15.00',
+                    manufacturer: 'Generic Pharma',
+                    savings: '40% cheaper'
+                },
+                {
+                    name: 'Brand Alternative 1',
+                    type: 'Branded',
+                    price: '₹45.00',
+                    manufacturer: 'Brand Pharma',
+                    savings: '10% more expensive'
+                },
+                {
+                    name: 'Generic Alternative 2',
+                    type: 'Generic',
+                    price: '₹12.00',
+                    manufacturer: 'Budget Pharma',
+                    savings: '50% cheaper'
+                }
+            ];
+
+            let alternativesHTML = '';
+            alternatives.forEach(alt => {
+                alternativesHTML += `
+                    <div class="alternative-item">
+                        <h4>${alt.name}</h4>
+                        <p class="alt-type">${alt.type}</p>
+                        <p class="alt-manufacturer">${alt.manufacturer}</p>
+                        <p class="alt-price">${alt.price}</p>
+                        <p class="alt-savings">${alt.savings}</p>
+                        <button class="btn-primary" onclick="selectAlternative('${alt.name}')">Select</button>
+                    </div>
+                `;
+            });
+
+            alternativesList.innerHTML = alternativesHTML;
+        }
+
+        function selectAlternative(name) {
+            alert(`Selected alternative: ${name}`);
+            closeModal('alternativesModal');
+        }
+
+        // Reviews functionality
+        function loadAllReviews() {
+            const allReviews = document.getElementById('allReviews');
+            // This would load more reviews in a real application
+            allReviews.innerHTML = '<p>Loading all reviews...</p>';
+        }
+
+        function submitReview() {
+            const rating = document.querySelectorAll('#starRating .fas').length;
+            const reviewText = document.getElementById('reviewText').value;
+
+            if (!rating || !reviewText.trim()) {
+                alert('Please provide both rating and review text');
+                return;
+            }
+
+            alert('Thank you for your review! It will be published after moderation.');
+            closeModal('reviewsModal');
+        }
+
+        // Star rating functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const stars = document.querySelectorAll('#starRating i');
+            stars.forEach((star, index) => {
+                star.addEventListener('click', function () {
+                    stars.forEach((s, i) => {
+                        if (i <= index) {
+                            s.className = 'fas fa-star';
+                        } else {
+                            s.className = 'far fa-star';
+                        }
+                    });
+                });
+            });
+        });
+
+        // AI Q&A functionality
+        function askQuestion(question) {
+            const qaInput = document.getElementById('qaInput');
+            qaInput.value = question;
+            askCustomQuestion();
+        }
+
+        function askCustomQuestion() {
+            const question = document.getElementById('qaInput').value.trim();
+            if (!question) return;
+
+            const qaResponses = document.getElementById('qaResponses');
+
+            // Add user question
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'qa-question';
+            questionDiv.innerHTML = `
+                <div class="qa-user">
+                    <i class="fas fa-user"></i>
+                    <span>You asked:</span>
+                </div>
+                <p>${question}</p>
+            `;
+            qaResponses.appendChild(questionDiv);
+
+            // Add loading response
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'qa-response loading';
+            loadingDiv.innerHTML = `
+                <div class="qa-ai">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Assistant:</span>
+                </div>
+                <p>Thinking...</p>
+            `;
+            qaResponses.appendChild(loadingDiv);
+
+            // Simulate AI response
+            setTimeout(() => {
+                const response = generateAIResponse(question);
+                loadingDiv.classList.remove('loading');
+                loadingDiv.innerHTML = `
+                    <div class="qa-ai">
+                        <i class="fas fa-robot"></i>
+                        <span>AI Assistant:</span>
+                    </div>
+                    <p>${response}</p>
+                `;
+
+                // Clear input
+                document.getElementById('qaInput').value = '';
+
+                // Scroll to bottom
+                qaResponses.scrollTop = qaResponses.scrollHeight;
+            }, 1500);
+        }
+
+        function generateAIResponse(question) {
+            const currentMedicine = JSON.parse(sessionStorage.getItem('currentMedicine'));
+            const medicineName = currentMedicine ? currentMedicine.name : 'this medicine';
+
+            const responses = {
+                'how does this medicine work': `${medicineName} works by ${currentMedicine?.mechanism || 'targeting specific pathways in the body to provide therapeutic effects'}. The onset of action is typically ${currentMedicine?.onset || 'within 30-60 minutes'}.`,
+                'side effects': `Common side effects of ${medicineName} may include ${currentMedicine?.sideEffects?.slice(0, 3).join(', ') || 'mild gastrointestinal upset, headache, and dizziness'}. Most side effects are mild and temporary.`,
+                'take with food': `${medicineName} ${currentMedicine?.howToTake?.includes('food') ? 'should be taken with food to reduce stomach upset' : 'can be taken with or without food'}. Always follow the instructions on the label.`,
+                'how long to work': `${medicineName} typically begins working ${currentMedicine?.onset || 'within 30-60 minutes'} and its effects last ${currentMedicine?.duration || '4-6 hours'}.`,
+                'alcohol interaction': `It's generally recommended to avoid alcohol while taking ${medicineName} as it may increase the risk of side effects or reduce the medication's effectiveness. Consult your healthcare provider for specific guidance.`
+            };
+
+            const lowerQuestion = question.toLowerCase();
+
+            for (const [key, response] of Object.entries(responses)) {
+                if (lowerQuestion.includes(key)) {
+                    return response;
+                }
+            }
+
+            return `I understand you're asking about ${medicineName}. While I can provide general information, it's always best to consult with your healthcare provider or pharmacist for personalized advice about your specific situation and medical history.`;
+        }
+
+        // Close modals when clicking outside
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // ==================== NEW INTERACTIVE FEATURES ====================
+
+        // Modal Functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Feature Functions
+        function openDosageCalculator() {
+            openModal('dosageCalculatorModal');
+        }
+
+        function openInteractionChecker() {
+            // Redirect to main page with interaction checker open
+            sessionStorage.setItem('openInteractionChecker', 'true');
+            window.location.href = 'index.html';
+        }
+
+        function openPillReminder() {
+            // Pre-fill medicine name in reminder
+            const medicineName = document.getElementById('medicineName').textContent;
+            sessionStorage.setItem('reminderMedicineName', medicineName);
+            sessionStorage.setItem('openPillReminder', 'true');
+            window.location.href = 'index.html';
+        }
+
+        function openAlternatives() {
+            loadAlternatives();
+            openModal('alternativesModal');
+        }
+
+        // Dosage Calculator
+        function calculateDosage() {
+            const weight = parseFloat(document.getElementById('patientWeight').value);
+            const age = parseInt(document.getElementById('patientAge').value);
+            const indication = document.getElementById('indication').value;
+
+            if (!weight || !age) {
+                showNotification('Please enter both weight and age', 'warning');
+                return;
+            }
+
+            // Get current medicine name for calculation
+            const medicineName = document.getElementById('medicineName').textContent.toLowerCase();
+
+            let dosage = calculateMedicineDosage(medicineName, weight, age, indication);
+
+            const resultDiv = document.getElementById('dosageResult');
+            const resultContent = document.getElementById('dosageResultContent');
+
+            resultContent.innerHTML = `
+                <div class="dosage-recommendation">
+                    <div class="dosage-amount">
+                        <h4>Recommended Dose:</h4>
+                        <p class="dose-value">${dosage.amount}</p>
+                    </div>
+                    <div class="dosage-frequency">
+                        <h4>Frequency:</h4>
+                        <p>${dosage.frequency}</p>
+                    </div>
+                    <div class="dosage-duration">
+                        <h4>Duration:</h4>
+                        <p>${dosage.duration}</p>
+                    </div>
+                    <div class="dosage-notes">
+                        <h4>Important Notes:</h4>
+                        <ul>
+                            ${dosage.notes.map(note => `<li>${note}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+
+            resultDiv.style.display = 'block';
+        }
+
+        function calculateMedicineDosage(medicineName, weight, age, indication) {
+            // Simplified dosage calculation logic
+            let baseAmount = 10; // mg/kg
+            let frequency = 'Every 8 hours';
+            let duration = '5-7 days';
+            let notes = ['Take with food', 'Complete the full course'];
+
+            if (medicineName.includes('paracetamol') || medicineName.includes('acetaminophen')) {
+                baseAmount = age < 12 ? 15 : 10;
+                frequency = 'Every 6 hours';
+                duration = 'As needed';
+                notes = ['Maximum 4 doses per day', 'Do not exceed recommended dose'];
+            } else if (medicineName.includes('ibuprofen')) {
+                baseAmount = age < 12 ? 10 : 8;
+                frequency = 'Every 8 hours';
+                duration = 'As needed (max 3 days)';
+                notes = ['Take with food', 'Avoid if allergic to aspirin'];
+            }
+
+            const calculatedDose = Math.round(baseAmount * weight);
+            const maxDose = age < 12 ? 500 : 1000;
+            const finalDose = Math.min(calculatedDose, maxDose);
+
+            return {
+                amount: `${finalDose}mg`,
+                frequency: frequency,
+                duration: duration,
+                notes: notes
+            };
+        }
+
+        // Alternatives Loader
+        function loadAlternatives() {
+            const currentMedicine = document.getElementById('medicineName').textContent;
+            const alternativesList = document.getElementById('alternativesList');
+
+            // Sample alternatives data
+            const alternatives = [
+                {
+                    name: 'Generic Paracetamol',
+                    type: 'generic',
+                    price: '₹15.00',
+                    manufacturer: 'Various',
+                    savings: '40% cheaper',
+                    rating: 4.1
+                },
+                {
+                    name: 'Crocin',
+                    type: 'branded',
+                    price: '₹25.00',
+                    manufacturer: 'GSK',
+                    savings: 'Same price range',
+                    rating: 4.3
+                },
+                {
+                    name: 'Dolo 650',
+                    type: 'branded',
+                    price: '₹30.00',
+                    manufacturer: 'Micro Labs',
+                    savings: '20% more expensive',
+                    rating: 4.2
+                }
+            ];
+
+            alternativesList.innerHTML = alternatives.map(alt => `
+                <div class="alternative-item" data-type="${alt.type}">
+                    <div class="alt-info">
+                        <h4>${alt.name}</h4>
+                        <p class="alt-manufacturer">${alt.manufacturer}</p>
+                        <div class="alt-rating">
+                            <div class="stars">
+                                ${generateStars(alt.rating)}
+                            </div>
+                            <span>${alt.rating}</span>
+                        </div>
+                    </div>
+                    <div class="alt-price">
+                        <span class="price">${alt.price}</span>
+                        <span class="savings ${alt.savings.includes('cheaper') ? 'cheaper' : alt.savings.includes('expensive') ? 'expensive' : 'same'}">${alt.savings}</span>
+                    </div>
+                    <button class="btn-select" onclick="selectAlternative('${alt.name}')">Select</button>
+                </div>
+            `).join('');
+        }
+
+        function generateStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    stars += '<i class="fas fa-star"></i>';
+                } else if (i - 0.5 <= rating) {
+                    stars += '<i class="fas fa-star-half-alt"></i>';
+                } else {
+                    stars += '<i class="far fa-star"></i>';
+                }
+            }
+            return stars;
+        }
+
+        function selectAlternative(medicineName) {
+            showNotification(`Selected ${medicineName}. Redirecting to details...`, 'success');
+            setTimeout(() => {
+                // In a real app, this would navigate to the alternative medicine's page
+                closeModal('alternativesModal');
+            }, 1500);
+        }
+
+        // Reviews System
+        function loadSampleReviews() {
+            const reviewsList = document.getElementById('reviewsList');
+            const sampleReviews = [
+                {
+                    user: 'Sarah M.',
+                    rating: 5,
+                    date: '2 days ago',
+                    comment: 'Very effective for my headaches. No side effects experienced.',
+                    helpful: 12
+                },
+                {
+                    user: 'John D.',
+                    rating: 4,
+                    date: '1 week ago',
+                    comment: 'Works well but takes a bit longer to kick in compared to other brands.',
+                    helpful: 8
+                },
+                {
+                    user: 'Maria L.',
+                    rating: 5,
+                    date: '2 weeks ago',
+                    comment: 'Great value for money. Doctor recommended and it works perfectly.',
+                    helpful: 15
+                }
+            ];
+
+            reviewsList.innerHTML = sampleReviews.map(review => `
+                <div class="review-item">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <span class="reviewer-name">${review.user}</span>
+                            <div class="review-rating">
+                                ${generateStars(review.rating)}
+                            </div>
+                        </div>
+                        <span class="review-date">${review.date}</span>
+                    </div>
+                    <p class="review-comment">${review.comment}</p>
+                    <div class="review-actions">
+                        <button class="helpful-btn" onclick="markHelpful(this)">
+                            <i class="fas fa-thumbs-up"></i> Helpful (${review.helpful})
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showAllReviews() {
+            openModal('reviewsModal');
+            loadAllReviews();
+        }
+
+        function loadAllReviews() {
+            // Load more comprehensive reviews in modal
+            const allReviews = document.getElementById('allReviews');
+            // This would typically fetch from a database
+            allReviews.innerHTML = '<p>Loading all reviews...</p>';
+        }
+
+        function markHelpful(button) {
+            const currentCount = parseInt(button.textContent.match(/\d+/)[0]);
+            button.innerHTML = `<i class="fas fa-thumbs-up"></i> Helpful (${currentCount + 1})`;
+            button.disabled = true;
+            button.style.opacity = '0.6';
+        }
+
+        // Star Rating System
+        function initializeInteractiveFeatures() {
+            // Initialize star rating
+            const stars = document.querySelectorAll('#starRating i');
+            stars.forEach((star, index) => {
+                star.addEventListener('click', () => {
+                    const rating = index + 1;
+                    updateStarRating(rating);
+                });
+
+                star.addEventListener('mouseover', () => {
+                    highlightStars(index + 1);
+                });
+            });
+
+            document.getElementById('starRating').addEventListener('mouseleave', () => {
+                const currentRating = document.getElementById('starRating').dataset.rating || 0;
+                highlightStars(currentRating);
+            });
+
+            // Initialize filter buttons
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    filterAlternatives(btn.dataset.filter);
+                });
+            });
+        }
+
+        function updateStarRating(rating) {
+            const starRating = document.getElementById('starRating');
+            starRating.dataset.rating = rating;
+            highlightStars(rating);
+        }
+
+        function highlightStars(rating) {
+            const stars = document.querySelectorAll('#starRating i');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.className = 'fas fa-star';
+                } else {
+                    star.className = 'far fa-star';
+                }
+            });
+        }
+
+        function submitReview() {
+            const rating = document.getElementById('starRating').dataset.rating;
+            const reviewText = document.getElementById('reviewText').value.trim();
+
+            if (!rating) {
+                showNotification('Please select a rating', 'warning');
+                return;
+            }
+
+            if (!reviewText) {
+                showNotification('Please write a review', 'warning');
+                return;
+            }
+
+            // In a real app, this would submit to a server
+            showNotification('Review submitted successfully!', 'success');
+
+            // Clear form
+            document.getElementById('reviewText').value = '';
+            updateStarRating(0);
+
+            closeModal('reviewsModal');
+        }
+
+        function filterAlternatives(filter) {
+            const alternatives = document.querySelectorAll('.alternative-item');
+            alternatives.forEach(item => {
+                if (filter === 'all' || item.dataset.type === filter) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // AI Q&A System
+        function askQuestion(question) {
+            const qaInput = document.getElementById('qaInput');
+            qaInput.value = question;
+            askCustomQuestion();
+        }
+
+        function askCustomQuestion() {
+            const qaInput = document.getElementById('qaInput');
+            const question = qaInput.value.trim();
+
+            if (!question) return;
+
+            const qaResponses = document.getElementById('qaResponses');
+
+            // Add question
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'qa-item question';
+            questionDiv.innerHTML = `
+                <div class="qa-content">
+                    <i class="fas fa-user"></i>
+                    <p>${question}</p>
+                </div>
+            `;
+            qaResponses.appendChild(questionDiv);
+
+            // Clear input
+            qaInput.value = '';
+
+            // Simulate AI response
+            setTimeout(() => {
+                const response = generateMedicineResponse(question);
+                const responseDiv = document.createElement('div');
+                responseDiv.className = 'qa-item answer';
+                responseDiv.innerHTML = `
+                    <div class="qa-content">
+                        <i class="fas fa-robot"></i>
+                        <p>${response}</p>
+                    </div>
+                `;
+                qaResponses.appendChild(responseDiv);
+                qaResponses.scrollTop = qaResponses.scrollHeight;
+            }, 1000);
+        }
+
+        function generateMedicineResponse(question) {
+            const medicineName = document.getElementById('medicineName').textContent.toLowerCase();
+            const lowerQuestion = question.toLowerCase();
+
+            if (lowerQuestion.includes('how') && lowerQuestion.includes('work')) {
+                return `${medicineName} works by inhibiting certain enzymes in your body that cause pain and inflammation. It typically starts working within 30-60 minutes of taking it.`;
+            } else if (lowerQuestion.includes('side effect')) {
+                return `Common side effects may include nausea, stomach upset, and dizziness. Serious side effects are rare but contact your doctor if you experience severe symptoms.`;
+            } else if (lowerQuestion.includes('food')) {
+                return `This medicine can be taken with or without food. However, taking it with food may help reduce stomach upset.`;
+            } else if (lowerQuestion.includes('long') && lowerQuestion.includes('work')) {
+                return `The effects typically begin within 30-60 minutes and can last 4-6 hours, depending on the dosage and your individual response.`;
+            } else if (lowerQuestion.includes('alcohol')) {
+                return `It's generally recommended to avoid alcohol while taking this medication as it may increase the risk of side effects, particularly stomach problems.`;
+            } else {
+                return `That's a great question about ${medicineName}. For specific medical advice, I recommend consulting with your healthcare provider or pharmacist who can give you personalized guidance based on your health condition.`;
+            }
+        }
+
+        // Notification System
+        function showNotification(message, type = 'info') {
+            // Create notification container if it doesn't exist
+            let container = document.getElementById('notificationContainer');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'notificationContainer';
+                container.className = 'notification-container';
+                document.body.appendChild(container);
+            }
+
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+
+            notification.innerHTML = `
+                <div>
+                    <strong>${type.charAt(0).toUpperCase() + type.slice(1)}:</strong> ${message}
+                </div>
+                <button class="close-notification" onclick="this.parentElement.remove()">&times;</button>
+            `;
+
+            container.appendChild(notification);
+
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function (event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

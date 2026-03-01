@@ -1,0 +1,157 @@
+/* Dark Mode Animation Styles */
+
+/* Floating particles in dark mode - make them white/light colored */
+body.dark-mode .floating-particle {
+    background: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgb(255, 255, 255);
+}
+
+/* Header background animation in dark mode */
+body.dark-mode .header-bg-animation::before {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Logo glow in dark mode */
+body.dark-mode .logo-glow {
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+}
+
+/* Brand text in dark mode */
+body.dark-mode .site-name {
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode .site-tagline {
+    color: #e0e0e0;
+}
+
+body.dark-mode .tagline-text {
+    color: #e0e0e0;
+}
+
+body.dark-mode .pulse-icon {
+    color: #ffd700;
+}
+
+/* Canvas animation in dark mode */
+body.dark-mode #networkCanvas {
+    opacity: 0.3;
+    filter: invert(1);
+}
+
+/* Sidebar overlay in dark mode */
+body.dark-mode .sidebar-overlay {
+    background: rgba(10, 14, 39, 0.9);
+}
+
+/* Button effects in dark mode */
+body.dark-mode .btn-bg-effect {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .btn-ripple {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Interactive button hover in dark mode */
+body.dark-mode .interactive-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Menu button in dark mode */
+body.dark-mode .menu-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .menu-icon {
+    color: #e0e0e0;
+}
+
+body.dark-mode .menu-text {
+    color: #e0e0e0;
+}
+
+/* Scroll animations in dark mode */
+body.dark-mode .fade-in {
+    opacity: 1;
+}
+
+/* Card animations in dark mode */
+body.dark-mode .med-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Pulse animation for icons in dark mode */
+body.dark-mode .pulse-icon {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        opacity: 1;
+        filter: drop-shadow(0 0 5px #ffd700);
+    }
+    50% {
+        opacity: 0.7;
+        filter: drop-shadow(0 0 15px #ffd700);
+    }
+}
+
+/* Stat numbers glow in dark mode */
+body.dark-mode .stat-number {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Button hover glow in dark mode */
+body.dark-mode .btn:hover {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* Emergency button glow in dark mode */
+body.dark-mode .btn-emergency {
+    box-shadow: 0 0 20px rgba(220, 20, 60, 0.5);
+}
+
+body.dark-mode .btn-emergency:hover {
+    box-shadow: 0 0 30px rgba(220, 20, 60, 0.7);
+}
+
+
+/* Canvas Animation Visibility */
+#networkCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.6;
+    transition: opacity 0.5s ease;
+}
+
+/* Light Mode Canvas */
+body:not(.dark-mode) #networkCanvas {
+    opacity: 0.4;
+    mix-blend-mode: normal;
+}
+
+/* Dark Mode Canvas */
+body.dark-mode #networkCanvas {
+    opacity: 0.5;
+    mix-blend-mode: screen;
+}

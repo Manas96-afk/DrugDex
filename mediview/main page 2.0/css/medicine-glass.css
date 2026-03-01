@@ -1,0 +1,418 @@
+/* Glassmorphism for Medicine Details Page */
+
+/* Glass Back Header */
+.back-header {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+body.dark-mode .back-header {
+    background: rgba(10, 14, 39, 0.4) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Glass Back Button */
+.back-btn {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.2);
+}
+
+body.dark-mode .back-btn {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+body.dark-mode .back-btn:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 16px 0 rgba(255, 215, 0, 0.2);
+}
+
+/* Glass Medicine Header */
+.medicine-header {
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+body.dark-mode .medicine-header {
+    background: rgba(20, 25, 50, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Glass Medicine Details Sections */
+.details-section {
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+body.dark-mode .details-section {
+    background: rgba(20, 25, 50, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Glass Dosage Info */
+.dosage-info {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+body.dark-mode .dosage-info {
+    background: rgba(30, 35, 60, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Glass Info Items */
+.info-item {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px) saturate(180%);
+    -webkit-backdrop-filter: blur(8px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+body.dark-mode .info-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Glass Info Box */
+.info-box {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+body.dark-mode .info-box {
+    background: rgba(30, 35, 60, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Glass Side Effects List */
+.side-effects,
+.precautions {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px) saturate(180%);
+    -webkit-backdrop-filter: blur(8px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+body.dark-mode .side-effects,
+body.dark-mode .precautions {
+    background: rgba(30, 35, 60, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Glass Medicine Card (Similar Medicines) */
+.medicine-card {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.1);
+}
+
+.medicine-card:hover {
+    background: rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 8px 24px 0 rgba(31, 38, 135, 0.2);
+    transform: translateY(-3px);
+}
+
+body.dark-mode .medicine-card {
+    background: rgba(20, 25, 50, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .medicine-card:hover {
+    background: rgba(30, 35, 60, 0.5) !important;
+    box-shadow: 0 8px 24px 0 rgba(255, 215, 0, 0.15);
+}
+
+/* Glass Feature Buttons */
+.feature-btn {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.feature-btn:hover {
+    background: rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.2);
+}
+
+body.dark-mode .feature-btn {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+body.dark-mode .feature-btn:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 16px 0 rgba(255, 215, 0, 0.2);
+}
+
+/* Glass Reviews Section */
+.reviews-section {
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+body.dark-mode .reviews-section {
+    background: rgba(20, 25, 50, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Glass Rating Summary */
+.rating-summary {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+body.dark-mode .rating-summary {
+    background: rgba(30, 35, 60, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Glass Q&A Section */
+.qa-section {
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+body.dark-mode .qa-section {
+    background: rgba(20, 25, 50, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Glass Question Tags */
+.question-tag {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(8px) saturate(180%);
+    -webkit-backdrop-filter: blur(8px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.question-tag:hover {
+    background: rgba(255, 255, 255, 0.35) !important;
+}
+
+body.dark-mode .question-tag {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .question-tag:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Glass Chemistry Diagram */
+.chemistry-diagram-container {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+body.dark-mode .chemistry-diagram-container {
+    background: rgba(30, 35, 60, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Glass Alternatives Grid */
+.alternatives-grid,
+.similar-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+/* Glass Medicine Not Found */
+.medicine-not-found {
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    padding: 3rem;
+}
+
+body.dark-mode .medicine-not-found {
+    background: rgba(20, 25, 50, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+
+/* Medicine Details Page Header Text Colors */
+
+/* Back Button Text - Light Mode */
+.back-btn {
+    color: #000000 !important;
+}
+
+.back-site-name {
+    color: #000000 !important;
+    font-weight: 600;
+}
+
+.back-tagline {
+    color: #333333 !important;
+}
+
+.back-text {
+    color: #000000 !important;
+}
+
+.back-btn i {
+    color: #000000 !important;
+}
+
+/* Back Button Text - Dark Mode */
+body.dark-mode .back-btn {
+    color: #ffffff !important;
+}
+
+body.dark-mode .back-site-name {
+    color: #ffffff !important;
+}
+
+body.dark-mode .back-tagline {
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .back-text {
+    color: #ffffff !important;
+}
+
+body.dark-mode .back-btn i {
+    color: #ffffff !important;
+}
+
+/* Medicine Header Text Colors */
+#medicineName {
+    color: #2c3e50 !important;
+}
+
+.medicine-meta span {
+    color: #555 !important;
+}
+
+.medicine-price .price {
+    color: #10b981 !important;
+    font-weight: 600;
+}
+
+.medicine-price .availability {
+    color: #059669 !important;
+}
+
+/* Dark Mode Medicine Header */
+body.dark-mode #medicineName {
+    color: #ffffff !important;
+}
+
+body.dark-mode .medicine-meta span {
+    color: #b0b0b0 !important;
+}
+
+body.dark-mode .medicine-price .price {
+    color: #10b981 !important;
+}
+
+body.dark-mode .medicine-price .availability {
+    color: #10b981 !important;
+}
+
+/* Section Headings */
+.details-section h2 {
+    color: #2c3e50 !important;
+}
+
+.details-section h3 {
+    color: #34495e !important;
+}
+
+.details-section h4 {
+    color: #555 !important;
+}
+
+body.dark-mode .details-section h2 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .details-section h3 {
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .details-section h4 {
+    color: #b0b0b0 !important;
+}
+
+/* Back Header Styling */
+.back-header {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .back-header {
+    background: rgba(10, 14, 39, 0.95) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure text is readable */
+.back-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.back-site-name {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.back-tagline {
+    font-size: 0.75rem;
+    line-height: 1;
+}

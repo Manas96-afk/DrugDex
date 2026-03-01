@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Test - MediView</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+        
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .test-section h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: border-color 0.3s;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-right: 10px;
+        }
+        
+        .btn:hover {
+            background: #5568d3;
+        }
+        
+        .results {
+            margin-top: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .result-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .result-item h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .result-item p {
+            color: #666;
+            font-size: 14px;
+            margin: 3px 0;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .status.loading {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Backend API Test</h1>
+        <p class="subtitle">Test your MediView backend connection</p>
+        
+        <div id="connectionStatus"></div>
+        
+        <!-- Test 1: Health Check -->
+        <div class="test-section">
+            <h2>1. Health Check</h2>
+            <button class="btn" onclick="testHealthCheck()">Test Health Check</button>
+            <div id="healthResult"></div>
+        </div>
+        
+        <!-- Test 2: Search Medicines -->
+        <div class="test-section">
+            <h2>2. Search Medicines</h2>
+            <input type="text" class="search-box" id="searchInput" placeholder="Type medicine name (e.g., paracetamol)">
+            <button class="btn" onclick="testSearch()">Search</button>
+            <div id="searchResult"></div>
+        </div>
+        
+        <!-- Test 3: Autocomplete -->
+        <div class="test-section">
+            <h2>3. Autocomplete Suggestions</h2>
+            <input type="text" class="search-box" id="autocompleteInput" placeholder="Type to get suggestions (e.g., para)">
+            <button class="btn" onclick="testAutocomplete()">Get Suggestions</button>
+            <div id="autocompleteResult"></div>
+        </div>
+        
+        <!-- Test 4: Get All Medicines -->
+        <div class="test-section">
+            <h2>4. Get All Medicines</h2>
+            <button class="btn" onclick="testGetAll()">Get All Medicines</button>
+            <div id="getAllResult"></div>
+        </div>
+        
+        <a href="index.html" class="back-link">← Back to Main Page</a>
+    </div>
+    
+    <script src="js/api-integration.js"></script>
+    <script>
+        // Check connection on load
+        window.addEventListener('load', async () => {
+            const statusDiv = document.getElementById('connectionStatus');
+            statusDiv.innerHTML = '<span class="status loading">Checking connection...</span>';
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/health');
+                const data = await response.json();
+                
+                if (data.status === 'OK') {
+                    statusDiv.innerHTML = '<span class="status success">✅ Backend Connected!</span>';
+                } else {
+                    statusDiv.innerHTML = '<span class="status error">❌ Backend Error</span>';
+                }
+            } catch (error) {
+                statusDiv.innerHTML = '<span class="status error">❌ Backend Not Running</span><p style="color: #721c24; margin-top: 10px;">Make sure the backend server is running on port 5000</p>';
+            }
+        });
+        
+        // Test 1: Health Check
+        async function testHealthCheck() {
+            const resultDiv = document.getElementById('healthResult');
+            resultDiv.innerHTML = '<span class="status loading">Testing...</span>';
+            
+            try {
+                const data = await api.checkHealth();
+                resultDiv.innerHTML = `
+                    <div class="results">
+                        <div class="result-item">
+                            <h3>✅ Success!</h3>
+                            <p><strong>Status:</strong> ${data.status}</p>
+                            <p><strong>Message:</strong> ${data.message}</p>
+                        </div>
+                        <div class="code-block">${JSON.stringify(data, null, 2)}</div>
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="results">
+                        <div class="result-item">
+                            <h3>❌ Error</h3>
+                            <p>${error.message}</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        // Test 2: Search
+        async function testSearch() {
+            const query = document.getElementById('searchInput').value;
+            const resultDiv = document.getElementById('searchResult');
+            
+            if (!query) {
+                resultDiv.innerHTML = '<p style="color: #856404; margin-top: 10px;">Please enter a search term</p>';
+                return;
+            }
+            
+            resultDiv.innerHTML = '<span class="status loading">Searching...</span>';
+            
+            try {
+                const data = await api.searchMedicines(query);
+                
+                if (data.length === 0) {
+                    resultDiv.innerHTML = '<p style="color: #856404; margin-top: 10px;">No results found</p>';
+                    return;
+                }
+                
+                const resultsHTML = data.map(med => `
+                    <div class="result-item">
+                        <h3>${med.name}</h3>
+                        <p><strong>Brand Names:</strong> ${med.brandNames.join(', ')}</p>
+                        <p><strong>Type:</strong> ${med.type}</p>
+                        <p><strong>Strength:</strong> ${med.strength}</p>
+                        <p><strong>Price:</strong> ₹${med.price}</p>
+                    </div>
+                `).join('');
+                
+                resultDiv.innerHTML = `
+                    <div class="results">
+                        <p style="margin-bottom: 10px;"><strong>Found ${data.length} result(s)</strong></p>
+                        ${resultsHTML}
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="results">
+                        <div class="result-item">
+                            <h3>❌ Error</h3>
+                            <p>${error.message}</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        // Test 3: Autocomplete
+        async function testAutocomplete() {
+            const query = document.getElementById('autocompleteInput').value;
+            const resultDiv = document.getElementById('autocompleteResult');
+            
+            if (!query || query.length < 2) {
+                resultDiv.innerHTML = '<p style="color: #856404; margin-top: 10px;">Please enter at least 2 characters</p>';
+                return;
+            }
+            
+            resultDiv.innerHTML = '<span class="status loading">Getting suggestions...</span>';
+            
+            try {
+                const data = await api.getAutocompleteSuggestions(query);
+                
+                if (data.length === 0) {
+                    resultDiv.innerHTML = '<p style="color: #856404; margin-top: 10px;">No suggestions found</p>';
+                    return;
+                }
+                
+                const resultsHTML = data.map(med => `
+                    <div class="result-item">
+                        <h3>${med.name}</h3>
+                        <p><strong>Brand Names:</strong> ${med.brandNames.join(', ')}</p>
+                        <p><strong>Type:</strong> ${med.type} - ${med.strength}</p>
+                    </div>
+                `).join('');
+                
+                resultDiv.innerHTML = `
+                    <div class="results">
+                        <p style="margin-bottom: 10px;"><strong>Found ${data.length} suggestion(s)</strong></p>
+                        ${resultsHTML}
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="results">
+                        <div class="result-item">
+                            <h3>❌ Error</h3>
+                            <p>${error.message}</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        // Test 4: Get All
+        async function testGetAll() {
+            const resultDiv = document.getElementById('getAllResult');
+            resultDiv.innerHTML = '<span class="status loading">Loading...</span>';
+            
+            try {
+                const data = await api.getAllMedicines();
+                
+                const resultsHTML = data.map(med => `
+                    <div class="result-item">
+                        <h3>${med.name}</h3>
+                        <p><strong>Generic:</strong> ${med.genericName}</p>
+                        <p><strong>Category:</strong> ${med.category}</p>
+                        <p><strong>Price:</strong> ₹${med.price}</p>
+                    </div>
+                `).join('');
+                
+                resultDiv.innerHTML = `
+                    <div class="results">
+                        <p style="margin-bottom: 10px;"><strong>Total: ${data.length} medicine(s)</strong></p>
+                        ${resultsHTML}
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="results">
+                        <div class="result-item">
+                            <h3>❌ Error</h3>
+                            <p>${error.message}</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        // Add real-time autocomplete
+        document.getElementById('autocompleteInput').addEventListener('input', async (e) => {
+            const query = e.target.value;
+            if (query.length >= 2) {
+                await testAutocomplete();
+            }
+        });
+    </script>
+</body>
+</html>

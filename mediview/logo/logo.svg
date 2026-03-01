@@ -1,0 +1,31 @@
+<svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+        </linearGradient>
+        <filter id="shadow">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+        </filter>
+    </defs>
+    
+    <!-- Background Circle -->
+    <circle cx="25" cy="25" r="23" fill="url(#logoGrad)" filter="url(#shadow)"/>
+    
+    <!-- Pill/Capsule Shape -->
+    <g transform="translate(25, 25)">
+        <!-- Left half of capsule -->
+        <path d="M -8,-10 A 4,4 0 0,0 -8,10 L -8,10 L 0,10 L 0,-10 Z" fill="#ffffff" opacity="0.9"/>
+        <!-- Right half of capsule -->
+        <path d="M 0,-10 L 8,-10 A 4,4 0 0,1 8,10 L 0,10 Z" fill="#ffffff" opacity="0.7"/>
+        <!-- Center line -->
+        <line x1="0" y1="-10" x2="0" y2="10" stroke="#10b981" stroke-width="1"/>
+        
+        <!-- Rx Symbol -->
+        <text x="-2" y="5" font-family="Georgia, serif" font-size="12" font-weight="bold" 
+              fill="#10b981" font-style="italic">Rx</text>
+    </g>
+    
+    <!-- Outer ring -->
+    <circle cx="25" cy="25" r="23" fill="none" stroke="#065f46" stroke-width="1.5" opacity="0.8"/>
+</svg>

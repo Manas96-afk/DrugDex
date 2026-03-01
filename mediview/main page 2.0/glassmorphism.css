@@ -1,0 +1,1384 @@
+/* Glassmorphism (Liquid Glass) Effects - Dark Mode Only */
+
+/* Glass Header - Dark Mode Only */
+.interactive-header {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-mode .interactive-header {
+    background: rgba(10, 14, 39, 0.3) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Glass Navigation Links - Dark Mode Only */
+.header-nav .nav-link {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-nav .nav-link:hover {
+    transform: translateY(-2px);
+}
+
+body.dark-mode .header-nav .nav-link {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .header-nav .nav-link:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 24px 0 rgba(255, 215, 0, 0.15);
+}
+
+/* Glass Dark Mode Toggle Button - Dark Mode Only */
+.dark-mode-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark-mode-btn:hover {
+    transform: scale(1.05);
+}
+
+body.dark-mode .dark-mode-btn {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 4px 16px 0 rgba(255, 215, 0, 0.1);
+}
+
+body.dark-mode .dark-mode-btn:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 24px 0 rgba(255, 215, 0, 0.2);
+}
+
+/* Glass Search Bar - Dark Mode Only */
+.modern-search,
+.search-wrapper {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-input {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-input:focus {
+    transform: translateY(-1px);
+}
+
+body.dark-mode .modern-search,
+body.dark-mode .search-wrapper {
+    background: rgba(20, 25, 50, 0.4) !important;
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .search-input {
+    background: rgba(30, 35, 60, 0.4) !important;
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .search-input:focus {
+    background: rgba(30, 35, 60, 0.6) !important;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 4px 16px 0 rgba(255, 215, 0, 0.2);
+}
+
+/* Glass Action Buttons - Dark Mode Only */
+.action-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.action-btn:hover {
+    transform: scale(1.05);
+}
+
+body.dark-mode .action-btn {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+body.dark-mode .action-btn:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 16px 0 rgba(255, 215, 0, 0.15);
+}
+
+/* Glass Cards - Dark Mode Only */
+.med-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.med-card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+body.dark-mode .med-card {
+    background: rgba(20, 25, 50, 0.4) !important;
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .med-card:hover {
+    background: rgba(30, 35, 60, 0.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 12px 40px 0 rgba(255, 215, 0, 0.2);
+}
+
+/* Glass Card Icon - Dark Mode Only */
+.card-icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-mode .card-icon {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Glass Health Stats - Dark Mode Only */
+.health-stats {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-mode .health-stats {
+    background: rgba(20, 25, 50, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Glass Stat Items - Dark Mode Only */
+.stat-item {
+    border-radius: 12px;
+    padding: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-item:hover {
+    transform: translateY(-2px);
+}
+
+body.dark-mode .stat-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Glass Footer - Dark Mode Only */
+.main-footer {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-mode .main-footer {
+    background: rgba(10, 14, 39, 0.5) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Glass Newsletter Form */
+.newsletter-form input {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.newsletter-form button {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+body.dark-mode .newsletter-form input {
+    background: rgba(30, 35, 60, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+body.dark-mode .newsletter-form button {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Glass Social Links */
+.social-links a {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.social-links a:hover {
+    background: rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.2);
+}
+
+body.dark-mode .social-links a {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+body.dark-mode .social-links a:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 16px 0 rgba(255, 215, 0, 0.2);
+}
+
+/* Glass Emergency Section */
+.emergency-section {
+    background: rgba(220, 20, 60, 0.2) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(220, 20, 60, 0.2);
+}
+
+body.dark-mode .emergency-section {
+    background: rgba(139, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(220, 20, 60, 0.3);
+}
+
+/* Glass Scroll to Top Button */
+#scroll-to-top {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.15);
+}
+
+#scroll-to-top:hover {
+    background: rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 8px 24px 0 rgba(31, 38, 135, 0.25);
+}
+
+body.dark-mode #scroll-to-top {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 4px 16px 0 rgba(255, 215, 0, 0.15);
+}
+
+body.dark-mode #scroll-to-top:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 24px 0 rgba(255, 215, 0, 0.25);
+}
+
+/* Glass Suggestions Container */
+.suggestions-container {
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+.suggestion-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+body.dark-mode .suggestions-container {
+    background: rgba(20, 25, 50, 0.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .suggestion-item {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+body.dark-mode .suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Glass Modal */
+.modal-content {
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+}
+
+body.dark-mode .modal-content {
+    background: rgba(20, 25, 50, 0.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Glass Buttons - Dark Mode Only */
+.btn,
+button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover,
+button:hover {
+    transform: translateY(-2px);
+}
+
+body.dark-mode .btn,
+body.dark-mode button {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .btn:hover,
+body.dark-mode button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 16px 0 rgba(255, 215, 0, 0.2);
+}
+
+/* Glass Hero Section - Dark Mode Only */
+.hero {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-mode .hero {
+    background: rgba(10, 14, 39, 0.3) !important;
+}
+
+/* Glass Departments Section - Dark Mode Only */
+.departments {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-mode .departments {
+    background: rgba(10, 14, 39, 0.2) !important;
+}
+
+/* Enhanced Smooth Effects - Dark Mode Only */
+
+/* Smooth Page Wrapper */
+.page-wrapper {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth Emergency Section */
+.emergency-section {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emergency-section:hover {
+    transform: scale(1.01);
+}
+
+/* Smooth Scroll to Top */
+#scroll-to-top {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#scroll-to-top:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Smooth Suggestions */
+.suggestions-container {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.suggestion-item {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.suggestion-item:hover {
+    transform: translateX(5px);
+}
+
+/* Smooth Modal */
+.modal-content {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth Social Links */
+.social-links a {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-links a:hover {
+    transform: translateY(-3px) rotate(5deg);
+}
+
+/* Smooth Newsletter Form */
+.newsletter-form input {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.newsletter-form input:focus {
+    transform: translateY(-1px);
+}
+
+.newsletter-form button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.newsletter-form button:hover {
+    transform: scale(1.05);
+}
+
+/* Smooth Section Titles */
+.section-title {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-title:hover {
+    transform: translateY(-2px);
+}
+
+/* Smooth Doc Count Badge */
+.doc-count {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.med-card:hover .doc-count {
+    transform: scale(1.05);
+}
+
+/* Smooth Emergency Number */
+.emergency-number {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emergency-number:hover {
+    transform: scale(1.05);
+}
+
+/* Smooth Logo Container */
+.logo-container {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo-container:hover {
+    transform: scale(1.03);
+}
+
+/* Smooth Brand Text */
+.brand-text {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth Site Name Letters */
+.site-name .letter {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo-container:hover .site-name .letter {
+    transform: translateY(-2px);
+}
+
+.logo-container:hover .site-name .letter:nth-child(1) { transition-delay: 0s; }
+.logo-container:hover .site-name .letter:nth-child(2) { transition-delay: 0.05s; }
+.logo-container:hover .site-name .letter:nth-child(3) { transition-delay: 0.1s; }
+.logo-container:hover .site-name .letter:nth-child(4) { transition-delay: 0.15s; }
+.logo-container:hover .site-name .letter:nth-child(5) { transition-delay: 0.2s; }
+.logo-container:hover .site-name .letter:nth-child(6) { transition-delay: 0.25s; }
+.logo-container:hover .site-name .letter:nth-child(7) { transition-delay: 0.3s; }
+
+/* Ultra Smooth Transitions for All Elements */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth Body Background */
+body {
+    transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth Text Rendering */
+body, button, input, textarea, select {
+    text-rendering: optimizeLegibility;
+}
+
+
+/* Fix Header and Remove Gap */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.interactive-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    margin: 0;
+    padding: 0.75rem 0;
+}
+
+.header-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 2rem;
+}
+
+/* Remove any gaps */
+.page-wrapper {
+    margin: 0;
+    padding: 0;
+    padding-top: 0;
+}
+
+.main-container {
+    margin-top: 0;
+    padding-top: 80px; /* Space for fixed header */
+}
+
+main {
+    margin-top: 0;
+}
+
+/* Fix hero section to start right after header */
+.hero {
+    margin-top: 0;
+    padding-top: 80px; /* Account for fixed header */
+}
+
+/* Ensure no gaps in sections */
+section {
+    margin: 0;
+}
+
+/* Fix header height and alignment */
+.interactive-header {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    gap: 2rem;
+}
+
+/* Fix logo and brand alignment */
+.left-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-wrapper {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.site-name {
+    font-size: 1.5rem;
+    margin: 0;
+    line-height: 1;
+    display: flex;
+    gap: 2px;
+}
+
+.site-tagline {
+    font-size: 0.75rem;
+    margin: 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 2px;
+}
+
+/* Fix navigation alignment */
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex: 1;
+    justify-content: center;
+    max-width: 600px;
+}
+
+.header-nav .nav-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+/* Fix right section */
+.right-section {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.dark-mode-toggle {
+    display: flex;
+    align-items: center;
+}
+
+/* Responsive fixes */
+@media (max-width: 1200px) {
+    .header-nav {
+        gap: 1rem;
+    }
+    
+    .header-nav .nav-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 968px) {
+    .header-container {
+        padding: 0 1rem;
+    }
+    
+    .site-name {
+        font-size: 1.25rem;
+    }
+    
+    .site-tagline {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .interactive-header {
+        padding: 0.5rem 0;
+        min-height: 60px;
+    }
+    
+    .logo-wrapper {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .site-name {
+        font-size: 1.1rem;
+    }
+    
+    .site-tagline {
+        font-size: 0.65rem;
+    }
+    
+    .hero {
+        padding-top: 70px;
+    }
+    
+    .main-container {
+        padding-top: 70px;
+    }
+}
+
+
+/* Additional Hero Section Fixes */
+.hero-content {
+    padding-top: 2rem;
+}
+
+/* Remove any default margins */
+h1, h2, h3, h4, h5, h6, p {
+    margin-top: 0;
+}
+
+/* Ensure sections connect properly */
+.hero + .departments {
+    margin-top: 0;
+}
+
+.departments {
+    padding-top: 3rem;
+}
+
+/* Fix any container spacing */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Ensure smooth section transitions */
+section + section {
+    margin-top: 0;
+}
+
+
+/* Ensure Icons are Visible */
+.header-nav .nav-link i {
+    display: inline-block;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+    vertical-align: middle;
+}
+
+.dark-mode-btn i {
+    display: inline-block;
+    font-size: 1.2rem;
+}
+
+.pulse-icon {
+    display: inline-block;
+    margin-right: 0.25rem;
+}
+
+/* Make sure Font Awesome icons load */
+i.fas, i.far, i.fab {
+    font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", "FontAwesome" !important;
+    font-weight: 900;
+    font-style: normal;
+    display: inline-block;
+}
+
+/* Icon visibility in both modes */
+body:not(.dark-mode) .header-nav .nav-link i {
+    color: #000000;
+    opacity: 1;
+}
+
+body:not(.dark-mode) .dark-mode-btn i {
+    color: #333;
+    opacity: 1;
+}
+
+body.dark-mode .header-nav .nav-link i {
+    color: #e0e0e0;
+    opacity: 1;
+}
+
+body.dark-mode .dark-mode-btn i {
+    color: #ffd700;
+    opacity: 1;
+}
+
+
+/* Hide All Notifications and Banners */
+#studentModeBanner,
+#notificationContainer,
+.notification-container,
+.notification,
+.alert-banner,
+.quiz-notification,
+.student-mode-banner,
+.quick-notes-notification {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+
+/* Fix Search Suggestions Dropdown in Dark Mode */
+.suggestions-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    margin-top: 0.5rem;
+    max-height: 400px;
+    overflow-y: auto;
+    border-radius: 12px;
+}
+
+body.dark-mode .suggestions-container {
+    background: rgba(20, 25, 50, 0.98) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .suggestion-item {
+    background: transparent;
+    color: #e0e0e0;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff;
+}
+
+body.dark-mode .suggestion-item:last-child {
+    border-bottom: none;
+}
+
+/* Ensure search wrapper has proper positioning */
+.search-wrapper {
+    position: relative;
+    z-index: 100;
+}
+
+/* Fix health stats z-index */
+.health-stats {
+    position: relative;
+    z-index: 1;
+}
+
+/* Make sure suggestions appear above everything */
+.modern-search {
+    position: relative;
+    z-index: 100;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+}
+
+/* Suggestion item styling */
+body.dark-mode .suggestion-item strong {
+    color: #ffd700;
+}
+
+body.dark-mode .suggestion-item .suggestion-type {
+    color: #b0b0b0;
+    font-size: 0.85rem;
+}
+
+/* Scrollbar for suggestions in dark mode */
+body.dark-mode .suggestions-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+body.dark-mode .suggestions-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+body.dark-mode .suggestions-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+body.dark-mode .suggestions-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Results count in suggestions */
+body.dark-mode .suggestions-header {
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #b0b0b0;
+    font-size: 0.85rem;
+}
+
+/* No results message */
+body.dark-mode .no-results {
+    padding: 2rem 1rem;
+    text-align: center;
+    color: #888;
+}
+
+
+/* Medicine Count Badge Above Search */
+.medicine-count-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(16, 185, 129, 0.15);
+    border: 2px solid rgba(16, 185, 129, 0.3);
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: #059669;
+    animation: pulse-badge 2s ease-in-out infinite;
+}
+
+.medicine-count-badge i {
+    font-size: 1.2rem;
+    color: #10b981;
+}
+
+.medicine-count-badge strong {
+    color: #059669;
+    font-size: 1.1rem;
+}
+
+body.dark-mode .medicine-count-badge {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: rgba(16, 185, 129, 0.4);
+    color: #10b981;
+}
+
+body.dark-mode .medicine-count-badge strong {
+    color: #10b981;
+}
+
+@keyframes pulse-badge {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 20px 5px rgba(16, 185, 129, 0.2);
+    }
+}
+
+/* All Medicines Button in Header */
+.all-medicines-toggle {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.all-medicines-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: rgba(16, 185, 129, 0.9);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.all-medicines-btn:hover {
+    background: rgba(16, 185, 129, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.all-medicines-btn i {
+    font-size: 1rem;
+}
+
+body.dark-mode .all-medicines-btn {
+    background: rgba(16, 185, 129, 0.8);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+}
+
+body.dark-mode .all-medicines-btn:hover {
+    background: rgba(16, 185, 129, 1);
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.6);
+}
+
+/* All Medicines Modal */
+.all-medicines-modal-content {
+    max-width: 900px;
+    max-height: 85vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.all-medicines-modal-content .modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+
+/* Medicine Filter */
+.medicine-filter {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-input {
+    flex: 1;
+    min-width: 250px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.filter-input:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.filter-select {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: #10b981;
+}
+
+body.dark-mode .filter-input,
+body.dark-mode .filter-select {
+    background: rgba(30, 35, 60, 0.6);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+body.dark-mode .filter-input:focus,
+body.dark-mode .filter-select:focus {
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+/* Medicines List */
+.medicines-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.medicine-item {
+    padding: 1.25rem;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.medicine-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-color: #10b981;
+}
+
+.medicine-item-header {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.medicine-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+}
+
+.medicine-strength {
+    font-size: 0.85rem;
+    color: #6b7280;
+    background: #f3f4f6;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.medicine-company {
+    font-size: 0.9rem;
+    color: #10b981;
+    font-weight: 500;
+    margin: 0.5rem 0;
+}
+
+.medicine-category {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: #6b7280;
+    background: #f9fafb;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    margin-top: 0.5rem;
+}
+
+.medicine-price {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #059669;
+    margin-top: 0.75rem;
+}
+
+body.dark-mode .medicine-item {
+    background: rgba(30, 35, 60, 0.6);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .medicine-item:hover {
+    background: rgba(40, 45, 70, 0.7);
+    border-color: #10b981;
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.2);
+}
+
+body.dark-mode .medicine-name {
+    color: #ffffff;
+}
+
+body.dark-mode .medicine-strength {
+    background: rgba(255, 255, 255, 0.1);
+    color: #b0b0b0;
+}
+
+body.dark-mode .medicine-company {
+    color: #10b981;
+}
+
+body.dark-mode .medicine-category {
+    background: rgba(255, 255, 255, 0.05);
+    color: #9ca3af;
+}
+
+/* Loading State */
+.loading-medicines {
+    text-align: center;
+    padding: 3rem;
+    color: #6b7280;
+}
+
+.loading-medicines i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+body.dark-mode .loading-medicines {
+    color: #9ca3af;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .all-medicines-btn .btn-text {
+        display: none;
+    }
+    
+    .medicine-filter {
+        flex-direction: column;
+    }
+    
+    .medicines-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .medicine-count-badge {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+    }
+}
+
+
+/* Fix All Medicines Modal Display */
+#allMedicinesModal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+#allMedicinesModal.show {
+    display: block !important;
+}
+
+.all-medicines-modal-content {
+    background: white;
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 900px;
+    max-height: 85vh;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.3s ease;
+    position: relative;
+}
+
+body.dark-mode .all-medicines-modal-content {
+    background: rgba(20, 25, 50, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Modal Header */
+.all-medicines-modal-content .modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.dark-mode .all-medicines-modal-content .modal-header {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.all-medicines-modal-content .modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #1f2937;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+body.dark-mode .all-medicines-modal-content .modal-header h2 {
+    color: #ffffff;
+}
+
+.all-medicines-modal-content .modal-header .close {
+    font-size: 2rem;
+    font-weight: 300;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 1;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.all-medicines-modal-content .modal-header .close:hover {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+body.dark-mode .all-medicines-modal-content .modal-header .close {
+    color: #9ca3af;
+}
+
+body.dark-mode .all-medicines-modal-content .modal-header .close:hover {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.2);
+}
+
+/* Ensure modal stays on top */
+.modal {
+    z-index: 9999 !important;
+}
+
+#allMedicinesModal {
+    z-index: 10000 !important;
+}
+
+
+/* Additional Modal Fixes */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal.show {
+    display: block !important;
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+    overflow: hidden !important;
+}
+
+/* Fix for modal content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+body.dark-mode .close:hover,
+body.dark-mode .close:focus {
+    color: white;
+}

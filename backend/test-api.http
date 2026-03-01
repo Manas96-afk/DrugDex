@@ -1,0 +1,46 @@
+### Health Check
+GET http://localhost:5000/api/health
+
+### Get All Medicines
+GET http://localhost:5000/api/medicines
+
+### Search Medicines - Paracetamol
+GET http://localhost:5000/api/medicines/search?q=paracetamol
+
+### Search Medicines - Pain
+GET http://localhost:5000/api/medicines/search?q=pain
+
+### Autocomplete Suggestions
+GET http://localhost:5000/api/medicines/suggest/autocomplete?q=para
+
+### Get Medicine by ID
+GET http://localhost:5000/api/medicines/paracetamol-500
+
+### Get Similar Medicines
+GET http://localhost:5000/api/medicines/paracetamol-500/similar
+
+### Get Alternative Medicines
+GET http://localhost:5000/api/medicines/paracetamol-500/alternatives
+
+### Register User
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123",
+  "name": "Test User"
+}
+
+### Login User
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+### Get User Profile (requires token)
+GET http://localhost:5000/api/users/profile
+Authorization: Bearer YOUR_TOKEN_HERE

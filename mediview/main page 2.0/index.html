@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DrugDex - Your Trusted Health Partner, Connect with Expert Doctors">
+    <link rel="icon" type="image/svg+xml" href="../logo/favicon.svg">
+    <link rel="stylesheet" href="styles.new.css">
+    <link rel="stylesheet" href="dark-mode-animations.css">
+    <link rel="stylesheet" href="liquid-effect.css">
+    <link rel="stylesheet" href="glassmorphism.css">
+    <link rel="stylesheet" href="css/medicine-details.css">
+    <link rel="stylesheet" href="css/medicine-glass.css">
+    <link rel="stylesheet" href="css/search-styles.css">
+    <link rel="stylesheet" href="css/medicines.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <title>DrugDex - Healthcare Services</title>
+</head>
+
+<body>
+    <!-- Liquid Background Effect -->
+    <div class="liquid-background">
+        <div class="liquid-blob liquid-blob-1"></div>
+        <div class="liquid-blob liquid-blob-2"></div>
+        <div class="liquid-blob liquid-blob-3"></div>
+        <div class="liquid-blob liquid-blob-4"></div>
+    </div>
+
+    <!-- Background Animation Canvas -->
+    <canvas id="networkCanvas"></canvas>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="page-wrapper">
+        <header class="interactive-header">
+            <!-- Animated background elements -->
+            <div class="header-bg-animation">
+                <div class="floating-particle"></div>
+                <div class="floating-particle"></div>
+                <div class="floating-particle"></div>
+                <div class="floating-particle"></div>
+                <div class="floating-particle"></div>
+                <div class="floating-particle"></div>
+            </div>
+
+            <div class="header-container">
+                <div class="left-section">
+                    <div class="logo-container" id="logoContainer">
+                        <div class="logo-wrapper">
+                            <img src="../logo/logo.svg" class="logo" alt="DrugDex Logo"
+                                onload="console.log('Logo loaded successfully')"
+                                onerror="console.log('Logo failed to load, showing fallback'); this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <!-- Fallback SVG logo -->
+                            <svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"
+                                class="logo fallback-logo" style="display: none;">
+                                <defs>
+                                    <linearGradient id="fallbackGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="25" cy="25" r="22" fill="url(#fallbackGrad)" stroke="#065f46"
+                                    stroke-width="2" />
+                                <text x="25" y="32" font-family="Arial, sans-serif" font-size="20" font-weight="bold" 
+                                    fill="white" text-anchor="middle">Rx</text>
+                            </svg>
+                            <div class="logo-glow"></div>
+                        </div>
+                        <div class="brand-text">
+                            <h1 class="site-name">
+                                <span class="letter">D</span>
+                                <span class="letter">r</span>
+                                <span class="letter">u</span>
+                                <span class="letter">g</span>
+                                <span class="letter">D</span>
+                                <span class="letter">e</span>
+                                <span class="letter">x</span>
+                            </h1>
+                            <p class="site-tagline">
+                                <i class="fas fa-heartbeat pulse-icon"></i>
+                                <span class="tagline-text">Your Health Partner</span>
+                            <div class="tagline-underline"></div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Header Navigation -->
+                <nav class="header-nav">
+                    <a href="#" class="nav-link active"><i class="fas fa-home"></i> Home</a>
+                    <a href="#" class="nav-link"><i class="fas fa-pills"></i> Medicines</a>
+                    <a href="#" class="nav-link"><i class="fas fa-ambulance"></i> Emergency</a>
+                    <a href="#" class="nav-link"><i class="fas fa-phone-alt"></i> Contact Us</a>
+                </nav>
+
+                <div class="right-section">
+                    <!-- All Medicines Button -->
+                    <div class="all-medicines-toggle">
+                        <button class="all-medicines-btn" id="allMedicinesBtn" title="View All Medicines">
+                            <i class="fas fa-list"></i>
+                            <span class="btn-text">All Medicines</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Dark Mode Toggle -->
+                    <div class="dark-mode-toggle">
+                        <button class="dark-mode-btn" id="darkModeToggle" title="Toggle Dark Mode">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Full Page Navigation Menu -->
+        <nav class="main-nav" id="mainNav">
+            <button class="menu-close-btn" id="menuCloseBtn" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="nav-links">
+                <a href="#" class="active"><i class="fas fa-home"></i> Home</a>
+                <a href="#"><i class="fas fa-pills"></i> Medicines</a>
+                <a href="#"><i class="fas fa-ambulance"></i> Emergency</a>
+                <a href="#"><i class="fas fa-phone-alt"></i> Contact Us</a>
+            </div>
+            <div class="auth-buttons">
+                <button class="btn btn-login">Login</button>
+                <button class="btn btn-register">Register</button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Your main content goes here -->
+        </main>
+
+        <main class="main-container">
+            <section class="hero">
+                <div class="container">
+                    <!-- Hero Content -->
+                    <div class="hero-content">
+                        <h1>Your Health, Our Priority</h1>
+                        <p>Search for medicines or connect with expert doctors for the best medical care.</p>
+
+                        <!-- Medicine Count Badge -->
+                        <div class="medicine-count-badge">
+                            <i class="fas fa-pills"></i>
+                            <span>We have <strong>100+</strong> medicines available</span>
+                        </div>
+
+                        <!-- Modern Search Bar -->
+                        <form class="modern-search search-form">
+                            <div class="search-wrapper">
+                                <div class="search-field">
+                                    <i class="fas fa-search search-icon"></i>
+                                    <input type="text" class="search-input"
+                                        placeholder="Search medicines, symptoms, or ask AI..."
+                                        aria-label="Search medicines" id="medicineSearch" autocomplete="off">
+                                </div>
+                                <div class="action-buttons">
+                                    <button type="button" class="action-btn student" id="studentModeBtn"
+                                        title="Student Mode" aria-pressed="false">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </button>
+                                    <input type="file" id="medicineImageUpload" accept="image/*" style="display: none;">
+                                    <button type="button" class="action-btn upload" title="Upload Medicine Image"
+                                        id="uploadBtn">
+                                        <i class="fas fa-camera"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="suggestions-container" id="suggestionsContainer">
+                                <!-- Suggestions will be populated by JavaScript -->
+                            </div>
+                        </form>
+
+                        <!-- Quick Health Stats -->
+                        <div class="health-stats" id="healthStats">
+                            <div class="stat-item">
+                                <i class="fas fa-pills"></i>
+                                <span class="stat-number" id="medicineCount">15,000+</span>
+                                <span class="stat-label">Medicines</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-user-md"></i>
+                                <span class="stat-number" id="doctorCount">500+</span>
+                                <span class="stat-label">Doctors</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-users"></i>
+                                <span class="stat-number" id="userCount">100K+</span>
+                                <span class="stat-label">Happy Users</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span class="stat-number" id="responseTime">24/7</span>
+                                <span class="stat-label">Support</span>
+                            </div>
+                        </div>
+
+                        <!-- Health Score Widget -->
+                        <div class="health-score-widget" id="healthScoreWidget" style="display: none;">
+                            <div class="health-score-number" id="healthScoreNumber">--</div>
+                            <div class="health-score-label">Your Health Score</div>
+                            <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">Based on your recent
+                                activity and vitals</p>
+                        </div>
+
+                        <!-- Quick Vitals Display -->
+                        <div class="vitals-grid" id="vitalsGrid" style="display: none;">
+                            <div class="vital-card">
+                                <h4><i class="fas fa-heartbeat"></i> Heart Rate</h4>
+                                <div class="vital-value" id="currentHeartRate">--</div>
+                                <div class="vital-unit">bpm</div>
+                            </div>
+                            <div class="vital-card">
+                                <h4><i class="fas fa-tint"></i> Blood Pressure</h4>
+                                <div class="vital-value" id="currentBloodPressure">--</div>
+                                <div class="vital-unit">mmHg</div>
+                            </div>
+                            <div class="vital-card">
+                                <h4><i class="fas fa-thermometer-half"></i> Temperature</h4>
+                                <div class="vital-value" id="currentTemperature">--</div>
+                                <div class="vital-unit">°F</div>
+                            </div>
+                            <div class="vital-card">
+                                <h4><i class="fas fa-vial"></i> Blood Sugar</h4>
+                                <div class="vital-value" id="currentBloodSugar">--</div>
+                                <div class="vital-unit">mg/dL</div>
+                            </div>
+                        </div>
+
+                        <!-- Health Insights Panel -->
+                        <div class="health-insights" id="healthInsights" style="display: none;">
+                            <h4><i class="fas fa-lightbulb"></i> Health Insights</h4>
+                            <div id="insightsList">
+                                <!-- Insights will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="departments">
+                <div class="section-title">
+                    <h2>Medicine Categories</h2>
+                    <p>Browse medicines by category</p>
+                </div>
+
+                <div class="cards-container">
+                    <div class="med-card">
+                        <div class="card-icon">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <h3>Pain Relief</h3>
+                        <p>Analgesics and pain management medicines</p>
+                        <span class="doc-count">15+ Medicines</span>
+                    </div>
+                    <div class="med-card">
+                        <div class="card-icon">
+                            <i class="fas fa-capsules"></i>
+                        </div>
+                        <h3>Antibiotics</h3>
+                        <p>Bacterial infection treatment medicines</p>
+                        <span class="doc-count">20+ Medicines</span>
+                    </div>
+                    <div class="med-card">
+                        <div class="card-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>Cardiovascular</h3>
+                        <p>Heart and blood pressure medicines</p>
+                        <span class="doc-count">12+ Medicines</span>
+                    </div>
+                    <div class="med-card">
+                        <div class="card-icon">
+                            <i class="fas fa-syringe"></i>
+                        </div>
+                        <h3>Diabetes</h3>
+                        <p>Blood sugar management medicines</p>
+                        <span class="doc-count">10+ Medicines</span>
+                    </div>
+                    <div class="med-card">
+                        <div class="card-icon">
+                            <i class="fas fa-lungs"></i>
+                        </div>
+                        <h3>Respiratory</h3>
+                        <p>Asthma and breathing medicines</p>
+                        <span class="doc-count">8+ Medicines</span>
+                    </div>
+                    <div class="med-card">
+                        <div class="card-icon">
+                            <i class="fas fa-allergies"></i>
+                        </div>
+                        <h3>Allergy Relief</h3>
+                        <p>Antihistamines and allergy medicines</p>
+                        <span class="doc-count">6+ Medicines</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Symptom Tracker Section -->
+            <section class="symptom-tracker" id="symptomTracker" style="display: none;">
+                <h3><i class="fas fa-notes-medical"></i> Quick Symptom Tracker</h3>
+                <p>Track your symptoms to get personalized medicine recommendations</p>
+
+                <div class="symptom-input-form">
+                    <input type="text" id="symptomInput" placeholder="Describe your symptom (e.g., headache, fever)"
+                        maxlength="100">
+                    <select id="severitySelect">
+                        <option value="1">1 - Mild</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5 - Moderate</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10 - Severe</option>
+                    </select>
+                    <button class="add-symptom-btn" onclick="addSymptom()">
+                        <i class="fas fa-plus"></i> Add Symptom
+                    </button>
+                </div>
+
+                <div class="recent-symptoms" id="recentSymptoms">
+                    <h4>Recent Symptoms</h4>
+                    <div id="symptomsList">
+                        <p style="color: #666; text-align: center;">No symptoms recorded yet</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="emergency-section">
+                <div class="emergency-content">
+                    <h2>Emergency</h2>
+                    <p>Call now for immediate medical assistance</p>
+                    <div class="emergency-number">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>108</span>
+                    </div>
+                    <button class="btn btn-emergency">Find Nearest Hospital</button>
+                </div>
+            </section>
+
+            <footer class="main-footer">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>About DrugDex</h3>
+                        <p>India's trusted healthcare platform where you'll find experienced doctors and quality
+                            healthcare services.</p>
+                        <div class="social-links">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Services</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Doctors</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Contact Information</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Health Street, Medical Colony, Delhi - 110001</p>
+                        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                        <p><i class="fas fa-envelope"></i> info@drugdex.com</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Newsletter</h3>
+                        <p>Get our latest updates and health tips</p>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Your email address" aria-label="Email address">
+                            <button aria-label="Subscribe"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 DrugDex. All Rights Reserved | <a href="#">Privacy Policy</a> | <a href="#">Terms of
+                            Use</a></p>
+                </div>
+            </footer>
+
+            <button id="scroll-to-top" aria-label="Scroll to top">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+        </main>
+
+        <!-- AI Health Assistant Modal -->
+        <div id="aiChatModal" class="modal">
+            <div class="modal-content ai-chat-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-robot"></i> AI Health Assistant</h2>
+                    <span class="close" onclick="closeModal('aiChatModal')">&times;</span>
+                </div>
+                <div class="chat-container" id="chatContainer">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message ai-message">
+                            <div class="message-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <p>Hello! I'm your AI Health Assistant. I can help you with:</p>
+                                <ul>
+                                    <li>Medicine information and interactions</li>
+                                    <li>Symptom analysis and guidance</li>
+                                    <li>Health tips and recommendations</li>
+                                    <li>Finding the right specialist</li>
+                                </ul>
+                                <p>How can I assist you today?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input-container">
+                        <input type="text" id="chatInput" placeholder="Ask me anything about health..." maxlength="500">
+                        <button id="sendChatBtn"><i class="fas fa-paper-plane"></i></button>
+                        <button id="voiceChatBtn" title="Voice Input"><i class="fas fa-microphone"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- All Medicines Modal -->
+        <div id="allMedicinesModal" class="modal">
+            <div class="modal-content all-medicines-modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-pills"></i> All Available Medicines (100+)</h2>
+                    <span class="close" onclick="closeAllMedicinesModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <!-- Search Filter -->
+                    <div class="medicine-filter">
+                        <input type="text" id="medicineFilterInput" placeholder="Filter medicines by name or company..." class="filter-input">
+                        <select id="categoryFilter" class="filter-select">
+                            <option value="all">All Categories</option>
+                            <option value="pain-relief">Pain Relief</option>
+                            <option value="antibiotic">Antibiotics</option>
+                            <option value="antacid">Antacids</option>
+                            <option value="diabetes">Diabetes</option>
+                            <option value="cardiovascular">Cardiovascular</option>
+                            <option value="respiratory">Respiratory</option>
+                            <option value="allergy">Allergy</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Medicines List -->
+                    <div class="medicines-list" id="medicinesList">
+                        <div class="loading-medicines">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Loading medicines...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Profile Modal -->
+        <div id="userProfileModal" class="modal profile-modal">
+            <div class="modal-content profile-modal-content">
+                <div class="profile-header">
+                    <div class="profile-cover">
+                        <div class="profile-cover-overlay"></div>
+                        <button class="close-profile" onclick="closeUserProfile()">&times;</button>
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-avatar">
+                            <img src="https://via.placeholder.com/120/667eea/ffffff?text=JD" alt="Profile Picture" id="profileAvatar">
+                            <button class="avatar-edit-btn" onclick="editAvatar()">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+                        <div class="profile-details">
+                            <h2 id="profileName">John Doe</h2>
+                            <p id="profileEmail">john.doe@email.com</p>
+                            <div class="profile-stats">
+                                <div class="stat">
+                                    <span class="stat-number">15</span>
+                                    <span class="stat-label">Appointments</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">8</span>
+                                    <span class="stat-label">Reports</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">92%</span>
+                                    <span class="stat-label">Health Score</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-content">
+                    <div class="profile-sidebar">
+                        <nav class="profile-nav">
+                            <button class="profile-nav-btn active" data-tab="overview">
+                                <i class="fas fa-tachometer-alt"></i> Overview
+                            </button>
+                            <button class="profile-nav-btn" data-tab="personal">
+                                <i class="fas fa-user"></i> Personal Info
+                            </button>
+                            <button class="profile-nav-btn" data-tab="medical">
+                                <i class="fas fa-heartbeat"></i> Medical History
+                            </button>
+                            <button class="profile-nav-btn" data-tab="appointments">
+                                <i class="fas fa-calendar"></i> Appointments
+                            </button>
+                            <button class="profile-nav-btn" data-tab="prescriptions">
+                                <i class="fas fa-pills"></i> Prescriptions
+                            </button>
+                            <button class="profile-nav-btn" data-tab="reports">
+                                <i class="fas fa-chart-line"></i> Health Reports
+                            </button>
+                            <button class="profile-nav-btn" data-tab="settings">
+                                <i class="fas fa-cog"></i> Settings
+                            </button>
+                        </nav>
+                    </div>
+
+                    <div class="profile-main">
+                        <!-- Overview Tab -->
+                        <div class="profile-tab active" id="overview-tab">
+                            <div class="tab-header">
+                                <h3><i class="fas fa-tachometer-alt"></i> Health Overview</h3>
+                            </div>
+                            <div class="overview-grid">
+                                <div class="overview-card">
+                                    <div class="card-icon health">
+                                        <i class="fas fa-heartbeat"></i>
+                                    </div>
+                                    <div class="card-content">
+                                        <h4>Health Score</h4>
+                                        <div class="health-score">92<span>%</span></div>
+                                        <p>Excellent condition</p>
+                                    </div>
+                                </div>
+                                <div class="overview-card">
+                                    <div class="card-icon appointments">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </div>
+                                    <div class="card-content">
+                                        <h4>Next Appointment</h4>
+                                        <div class="appointment-date">Dec 15, 2024</div>
+                                        <p>Dr. Smith - Cardiology</p>
+                                    </div>
+                                </div>
+                                <div class="overview-card">
+                                    <div class="card-icon medications">
+                                        <i class="fas fa-pills"></i>
+                                    </div>
+                                    <div class="card-content">
+                                        <h4>Active Medications</h4>
+                                        <div class="medication-count">3</div>
+                                        <p>2 due today</p>
+                                    </div>
+                                </div>
+                                <div class="overview-card">
+                                    <div class="card-icon vitals">
+                                        <i class="fas fa-chart-pulse"></i>
+                                    </div>
+                                    <div class="card-content">
+                                        <h4>Latest Vitals</h4>
+                                        <div class="vitals-summary">120/80</div>
+                                        <p>Blood Pressure - Normal</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="recent-activity">
+                                <h4><i class="fas fa-clock"></i> Recent Activity</h4>
+                                <div class="activity-list">
+                                    <div class="activity-item">
+                                        <div class="activity-icon">
+                                            <i class="fas fa-user-md"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <p><strong>Appointment completed</strong> with Dr. Johnson</p>
+                                            <span class="activity-time">2 days ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon">
+                                            <i class="fas fa-pills"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <p><strong>Medication reminder</strong> - Aspirin taken</p>
+                                            <span class="activity-time">1 week ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <p><strong>Health report</strong> generated</p>
+                                            <span class="activity-time">2 weeks ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Personal Info Tab -->
+                        <div class="profile-tab" id="personal-tab">
+                            <div class="tab-header">
+                                <h3><i class="fas fa-user"></i> Personal Information</h3>
+                                <button class="btn-edit" onclick="editPersonalInfo()">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                            </div>
+                            <div class="personal-info-grid">
+                                <div class="info-group">
+                                    <label>Full Name</label>
+                                    <input type="text" id="fullName" value="John Doe" readonly>
+                                </div>
+                                <div class="info-group">
+                                    <label>Email</label>
+                                    <input type="email" id="email" value="john.doe@email.com" readonly>
+                                </div>
+                                <div class="info-group">
+                                    <label>Phone</label>
+                                    <input type="tel" id="phone" value="+1 (555) 123-4567" readonly>
+                                </div>
+                                <div class="info-group">
+                                    <label>Date of Birth</label>
+                                    <input type="date" id="dateOfBirth" value="1990-05-15" readonly>
+                                </div>
+                                <div class="info-group">
+                                    <label>Gender</label>
+                                    <select id="gender" disabled>
+                                        <option value="male" selected>Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="info-group">
+                                    <label>Blood Type</label>
+                                    <select id="bloodType" disabled>
+                                        <option value="O+" selected>O+</option>
+                                        <option value="O-">O-</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                    </select>
+                                </div>
+                                <div class="info-group full-width">
+                                    <label>Address</label>
+                                    <textarea id="address" readonly>123 Health Street, Medical City, MC 12345</textarea>
+                                </div>
+                                <div class="info-group full-width">
+                                    <label>Emergency Contact</label>
+                                    <input type="text" id="emergencyContact" value="Jane Doe - +1 (555) 987-6543" readonly>
+                                </div>
+                            </div>
+                            <div class="form-actions" id="personalInfoActions" style="display: none;">
+                                <button class="btn-save" onclick="savePersonalInfo()">
+                                    <i class="fas fa-save"></i> Save Changes
+                                </button>
+                                <button class="btn-cancel" onclick="cancelPersonalEdit()">
+                                    <i class="fas fa-times"></i> Cancel
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Medical History Tab -->
+                        <div class="profile-tab" id="medical-tab">
+                            <div class="tab-header">
+                                <h3><i class="fas fa-heartbeat"></i> Medical History</h3>
+                                <button class="btn-add" onclick="addMedicalRecord()">
+                                    <i class="fas fa-plus"></i> Add Record
+                                </button>
+                            </div>
+                            <div class="medical-history">
+                                <div class="medical-section">
+                                    <h4><i class="fas fa-allergies"></i> Allergies</h4>
+                                    <div class="medical-items">
+                                        <div class="medical-item">
+                                            <span class="item-name">Penicillin</span>
+                                            <span class="item-severity severe">Severe</span>
+                                        </div>
+                                        <div class="medical-item">
+                                            <span class="item-name">Peanuts</span>
+                                            <span class="item-severity moderate">Moderate</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="medical-section">
+                                    <h4><i class="fas fa-procedures"></i> Chronic Conditions</h4>
+                                    <div class="medical-items">
+                                        <div class="medical-item">
+                                            <span class="item-name">Hypertension</span>
+                                            <span class="item-date">Since 2020</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="medical-section">
+                                    <h4><i class="fas fa-cut"></i> Surgeries</h4>
+                                    <div class="medical-items">
+                                        <div class="medical-item">
+                                            <span class="item-name">Appendectomy</span>
+                                            <span class="item-date">March 2019</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="medical-section">
+                                    <h4><i class="fas fa-syringe"></i> Vaccinations</h4>
+                                    <div class="medical-items">
+                                        <div class="medical-item">
+                                            <span class="item-name">COVID-19 (Pfizer)</span>
+                                            <span class="item-date">Booster - Oct 2024</span>
+                                        </div>
+                                        <div class="medical-item">
+                                            <span class="item-name">Flu Shot</span>
+                                            <span class="item-date">Sep 2024</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Appointments Tab -->
+                        <div class="profile-tab" id="appointments-tab">
+                            <div class="tab-header">
+                                <h3><i class="fas fa-calendar"></i> Appointments</h3>
+                                <button class="btn-add" onclick="bookNewAppointment()">
+                                    <i class="fas fa-plus"></i> Book New
+                                </button>
+                            </div>
+                            <div class="appointments-container">
+                                <div class="appointment-filters">
+                                    <button class="filter-btn active" data-filter="upcoming">Upcoming</button>
+                                    <button class="filter-btn" data-filter="past">Past</button>
+                                    <button class="filter-btn" data-filter="cancelled">Cancelled</button>
+                                </div>
+                                <div class="appointments-list">
+                                    <div class="appointment-card upcoming">
+                                        <div class="appointment-date">
+                                            <div class="date-day">15</div>
+                                            <div class="date-month">Dec</div>
+                                        </div>
+                                        <div class="appointment-details">
+                                            <h4>Dr. Sarah Smith</h4>
+                                            <p>Cardiology Consultation</p>
+                                            <div class="appointment-time">
+                                                <i class="fas fa-clock"></i> 10:30 AM
+                                            </div>
+                                            <div class="appointment-location">
+                                                <i class="fas fa-map-marker-alt"></i> MediView Clinic
+                                            </div>
+                                        </div>
+                                        <div class="appointment-actions">
+                                            <button class="btn-reschedule">Reschedule</button>
+                                            <button class="btn-cancel">Cancel</button>
+                                        </div>
+                                    </div>
+                                    <div class="appointment-card upcoming">
+                                        <div class="appointment-date">
+                                            <div class="date-day">22</div>
+                                            <div class="date-month">Dec</div>
+                                        </div>
+                                        <div class="appointment-details">
+                                            <h4>Dr. Michael Johnson</h4>
+                                            <p>General Checkup</p>
+                                            <div class="appointment-time">
+                                                <i class="fas fa-clock"></i> 2:00 PM
+                                            </div>
+                                            <div class="appointment-location">
+                                                <i class="fas fa-map-marker-alt"></i> Health Center
+                                            </div>
+                                        </div>
+                                        <div class="appointment-actions">
+                                            <button class="btn-reschedule">Reschedule</button>
+                                            <button class="btn-cancel">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Prescriptions Tab -->
+                        <div class="profile-tab" id="prescriptions-tab">
+                            <div class="tab-header">
+                                <h3><i class="fas fa-pills"></i> Prescriptions</h3>
+                                <button class="btn-add" onclick="addPrescription()">
+                                    <i class="fas fa-plus"></i> Add Prescription
+                                </button>
+                            </div>
+                            <div class="prescriptions-container">
+                                <div class="prescription-filters">
+                                    <button class="filter-btn active" data-filter="active">Active</button>
+                                    <button class="filter-btn" data-filter="completed">Completed</button>
+                                    <button class="filter-btn" data-filter="all">All</button>
+                                </div>
+                                <div class="prescriptions-list">
+                                    <div class="prescription-card active">
+                                        <div class="prescription-header">
+                                            <h4>Lisinopril 10mg</h4>
+                                            <span class="prescription-status active">Active</span>
+                                        </div>
+                                        <div class="prescription-details">
+                                            <p><strong>Prescribed by:</strong> Dr. Sarah Smith</p>
+                                            <p><strong>Dosage:</strong> 1 tablet daily</p>
+                                            <p><strong>Duration:</strong> 30 days</p>
+                                            <p><strong>Refills:</strong> 2 remaining</p>
+                                        </div>
+                                        <div class="prescription-actions">
+                                            <button class="btn-refill">Request Refill</button>
+                                            <button class="btn-reminder">Set Reminder</button>
+                                        </div>
+                                    </div>
+                                    <div class="prescription-card active">
+                                        <div class="prescription-header">
+                                            <h4>Aspirin 81mg</h4>
+                                            <span class="prescription-status active">Active</span>
+                                        </div>
+                                        <div class="prescription-details">
+                                            <p><strong>Prescribed by:</strong> Dr. Michael Johnson</p>
+                                            <p><strong>Dosage:</strong> 1 tablet daily</p>
+                                            <p><strong>Duration:</strong> Ongoing</p>
+                                            <p><strong>Refills:</strong> Unlimited</p>
+                                        </div>
+                                        <div class="prescription-actions">
+                                            <button class="btn-refill">Request Refill</button>
+                                            <button class="btn-reminder">Set Reminder</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Health Reports Tab -->
+                        <div class="profile-tab" id="reports-tab">
+                            <div class="tab-header">
+                                <h3><i class="fas fa-chart-line"></i> Health Reports</h3>
+                                <button class="btn-add" onclick="generateReport()">
+                                    <i class="fas fa-plus"></i> Generate Report
+                                </button>
+                            </div>
+                            <div class="reports-container">
+                                <div class="reports-grid">
+                                    <div class="report-card">
+                                        <div class="report-icon">
+                                            <i class="fas fa-heartbeat"></i>
+                                        </div>
+                                        <div class="report-content">
+                                            <h4>Cardiovascular Health</h4>
+                                            <p>Comprehensive heart health analysis</p>
+                                            <span class="report-date">Nov 28, 2024</span>
+                                        </div>
+                                        <div class="report-actions">
+                                            <button class="btn-view">View</button>
+                                            <button class="btn-download">Download</button>
+                                        </div>
+                                    </div>
+                                    <div class="report-card">
+                                        <div class="report-icon">
+                                            <i class="fas fa-vial"></i>
+                                        </div>
+                                        <div class="report-content">
+                                            <h4>Blood Test Results</h4>
+                                            <p>Complete blood count and chemistry</p>
+                                            <span class="report-date">Nov 15, 2024</span>
+                                        </div>
+                                        <div class="report-actions">
+                                            <button class="btn-view">View</button>
+                                            <button class="btn-download">Download</button>
+                                        </div>
+                                    </div>
+                                    <div class="report-card">
+                                        <div class="report-icon">
+                                            <i class="fas fa-x-ray"></i>
+                                        </div>
+                                        <div class="report-content">
+                                            <h4>Chest X-Ray</h4>
+                                            <p>Routine chest examination</p>
+                                            <span class="report-date">Oct 20, 2024</span>
+                                        </div>
+                                        <div class="report-actions">
+                                            <button class="btn-view">View</button>
+                                            <button class="btn-download">Download</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Settings Tab -->
+                        <div class="profile-tab" id="settings-tab">
+                            <div class="tab-header">
+                                <h3><i class="fas fa-cog"></i> Settings</h3>
+                            </div>
+                            <div class="settings-container">
+                                <div class="settings-section">
+                                    <h4><i class="fas fa-bell"></i> Notifications</h4>
+                                    <div class="setting-item">
+                                        <label class="setting-label">
+                                            <input type="checkbox" checked>
+                                            <span class="checkmark"></span>
+                                            Email notifications for appointments
+                                        </label>
+                                    </div>
+                                    <div class="setting-item">
+                                        <label class="setting-label">
+                                            <input type="checkbox" checked>
+                                            <span class="checkmark"></span>
+                                            SMS reminders for medications
+                                        </label>
+                                    </div>
+                                    <div class="setting-item">
+                                        <label class="setting-label">
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                            Push notifications for health tips
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="settings-section">
+                                    <h4><i class="fas fa-shield-alt"></i> Privacy</h4>
+                                    <div class="setting-item">
+                                        <label class="setting-label">
+                                            <input type="checkbox" checked>
+                                            <span class="checkmark"></span>
+                                            Share health data with doctors
+                                        </label>
+                                    </div>
+                                    <div class="setting-item">
+                                        <label class="setting-label">
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                            Allow health data for research
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="settings-section">
+                                    <h4><i class="fas fa-palette"></i> Appearance</h4>
+                                    <div class="setting-item">
+                                        <label>Theme</label>
+                                        <select class="setting-select">
+                                            <option value="light" selected>Light</option>
+                                            <option value="dark">Dark</option>
+                                            <option value="auto">Auto</option>
+                                        </select>
+                                    </div>
+                                    <div class="setting-item">
+                                        <label>Language</label>
+                                        <select class="setting-select">
+                                            <option value="en" selected>English</option>
+                                            <option value="es">Spanish</option>
+                                            <option value="fr">French</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="settings-section danger-zone">
+                                    <h4><i class="fas fa-exclamation-triangle"></i> Danger Zone</h4>
+                                    <div class="setting-item">
+                                        <button class="btn-danger" onclick="changePassword()">
+                                            <i class="fas fa-key"></i> Change Password
+                                        </button>
+                                    </div>
+                                    <div class="setting-item">
+                                        <button class="btn-danger" onclick="deleteAccount()">
+                                            <i class="fas fa-trash"></i> Delete Account
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+        <script src="animation.js"></script>
+        <script src="js/medicines.js"></script>
+        <!-- <script src="js/search.js"></script> -->
+        <script src="js/search-handler.js"></script>
+        <script src="js/student-mode.js"></script>
+        <script src="js/all-medicines.js"></script>
+        <script src="js/advanced-features.js"></script>
+        <!-- <script src="js/ai-search.js"></script> -->
+        <script src="js/health-analytics.js"></script>
+        <script src="js/api-integration.js"></script>
+        
+        <!-- Dark Mode Toggle Script -->
+        <script>
+            (function() {
+                const darkModeToggle = document.getElementById('darkModeToggle');
+                const body = document.body;
+                
+                if (!darkModeToggle) {
+                    console.error('Dark mode toggle button not found');
+                    return;
+                }
+                
+                const icon = darkModeToggle.querySelector('i');
+
+                // Check for saved dark mode preference
+                const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+                
+                if (isDarkMode) {
+                    body.classList.add('dark-mode');
+                    if (icon) {
+                        icon.classList.remove('fa-moon');
+                        icon.classList.add('fa-sun');
+                    }
+                }
+
+                // Toggle dark mode
+                darkModeToggle.addEventListener('click', function() {
+                    body.classList.toggle('dark-mode');
+                    
+                    // Update icon
+                    if (body.classList.contains('dark-mode')) {
+                        if (icon) {
+                            icon.classList.remove('fa-moon');
+                            icon.classList.add('fa-sun');
+                        }
+                        localStorage.setItem('darkMode', 'enabled');
+                        console.log('Dark mode enabled');
+                    } else {
+                        if (icon) {
+                            icon.classList.remove('fa-sun');
+                            icon.classList.add('fa-moon');
+                        }
+                        localStorage.setItem('darkMode', 'disabled');
+                        console.log('Dark mode disabled');
+                    }
+                });
+
+                // Create shooting stars periodically in dark mode
+                function createShootingStar() {
+                    if (!body.classList.contains('dark-mode')) return;
+                    
+                    const star = document.createElement('div');
+                    star.className = 'shooting-star';
+                    star.style.cssText = `
+                        position: fixed;
+                        top: ${Math.random() * 50}%;
+                        right: -100px;
+                        width: 2px;
+                        height: 100px;
+                        background: linear-gradient(to bottom, transparent, white, transparent);
+                        transform: rotate(-45deg);
+                        pointer-events: none;
+                        z-index: 1;
+                        animation: shoot 3s linear;
+                    `;
+                    
+                    document.body.appendChild(star);
+                    
+                    setTimeout(() => {
+                        star.remove();
+                    }, 3000);
+                }
+
+                // Add shooting star animation
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes shoot {
+                        0% {
+                            transform: translate(0, 0) rotate(-45deg);
+                            opacity: 0;
+                        }
+                        10% {
+                            opacity: 1;
+                        }
+                        90% {
+                            opacity: 1;
+                        }
+                        100% {
+                            transform: translate(-1000px, 1000px) rotate(-45deg);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+
+                // Create shooting stars every 5-10 seconds in dark mode
+                setInterval(() => {
+                    if (body.classList.contains('dark-mode')) {
+                        createShootingStar();
+                    }
+                }, Math.random() * 5000 + 5000);
+                
+                console.log('Dark mode toggle initialized');
+            })();
+        </script>
+
+        <!-- Liquid Ripple Effect Script -->
+        <script>
+            (function() {
+                // Add liquid ripple effect to all buttons and clickable elements
+                function createRipple(event) {
+                    const button = event.currentTarget;
+                    
+                    // Add liquid-ripple class if not present
+                    if (!button.classList.contains('liquid-ripple')) {
+                        button.classList.add('liquid-ripple');
+                    }
+                    
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('ripple-effect');
+                    
+                    const rect = button.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = event.clientX - rect.left - size / 2;
+                    const y = event.clientY - rect.top - size / 2;
+                    
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    
+                    button.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 800);
+                }
+                
+                // Apply to all buttons
+                document.addEventListener('DOMContentLoaded', () => {
+                    const buttons = document.querySelectorAll('button, .btn, .nav-link, .med-card');
+                    buttons.forEach(button => {
+                        button.addEventListener('click', createRipple);
+                    });
+                    
+                    // Add liquid-btn class to buttons
+                    const allButtons = document.querySelectorAll('button, .btn');
+                    allButtons.forEach(btn => {
+                        btn.classList.add('liquid-btn');
+                    });
+                    
+                    console.log('Liquid effects initialized');
+                });
+            })();
+        </script>
+    </div>
+</body>
+
+</html>
