@@ -341,5 +341,4 @@ For issues, questions, or suggestions:
 [⬆ Back to Top](#drugdex---healthcare-platform)
 
 </div>
-#   D r u g D e x  
- 
+#
